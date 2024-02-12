@@ -6,7 +6,6 @@ public class App
 {
     public static void main(String[] args)
     {
-        System.out.println("test");
         try
         {
             // Load Database driver
@@ -14,13 +13,16 @@ public class App
         }
         catch (ClassNotFoundException e)
         {
+            //handle unable to find jdbc driver
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
 
         // Connection to the database
         Connection con = null;
+        //number of retries permitted
         int retries = 100;
+        //loops for number of retries
         for (int i = 0; i < retries; ++i)
         {
             System.out.println("Connecting to database...");
@@ -38,24 +40,28 @@ public class App
             }
             catch (SQLException sqle)
             {
+                //handle connection failure
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
             {
+                //handle thread interruption
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
 
+        //check if connection exists
         if (con != null)
         {
             try
             {
-                // Close connection
+                //close connection
                 con.close();
             }
             catch (Exception e)
             {
+                //handle failing to close connection
                 System.out.println("Error closing connection to database");
             }
         }
