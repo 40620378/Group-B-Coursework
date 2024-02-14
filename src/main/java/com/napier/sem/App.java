@@ -2,8 +2,13 @@ package com.napier.sem;
 
 import java.sql.*;
 
+
 public class App
 {
+
+    /**
+     * Connect to the MySQL database.
+     */
     public static void main(String[] args)
     {
         try
@@ -18,7 +23,9 @@ public class App
             System.exit(-1);
         }
 
-        // Connection to the database
+        /**
+         * Connection to MySQL database.
+         */
         Connection con = null;
         //number of retries permitted
         int retries = 100;
@@ -51,7 +58,9 @@ public class App
             }
         }
 
-        //check if connection exists
+        /**
+         * Disconnect from the MySQL database.
+         */
         if (con != null)
         {
             try
