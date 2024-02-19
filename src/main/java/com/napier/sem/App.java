@@ -2,6 +2,9 @@ package com.napier.sem;
 
 import java.sql.*;
 
+/**
+ * Makes a connection to the Database
+ */
 
 public class App
 {
