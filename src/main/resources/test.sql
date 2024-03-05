@@ -1,1 +1,1 @@
-SELECT * FROM countrylanguage WHERE CountryCode = 'ABW';
+SELECT * FROM countrylanguage WHERE CountryCode = ?;
