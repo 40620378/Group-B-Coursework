@@ -15,12 +15,12 @@ public class ReportUtil {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
                 System.out.println("Report name: " + pop.reportName);
-                pop.totalNotCity = resultSet.getInt("totalNotCity");
-                System.out.println("Not city:" + pop.totalNotCity);
                 pop.totalCity = resultSet.getInt("totalCity");
                 System.out.println("Total city:" + pop.totalCity);
                 pop.totalPopulation = resultSet.getInt("totalPopulation");
                 System.out.println("Population:" + pop.totalPopulation);
+                pop.totalNotCity = resultSet.getInt("totalNotCity");
+                System.out.println("Not city:" + pop.totalNotCity);
                 result.add(pop);
             }
             System.out.println(result.size());
