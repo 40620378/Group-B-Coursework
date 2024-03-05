@@ -1,4 +1,4 @@
-SELECT country.name AS reportName, country.Population AS totalPopulation, SUM(country.Population - sum_cities.city_population) AS totalNotCity, sum_cities.city_population AS totalCity
+SELECT country.Name AS reportName, country.Population AS totalPopulation, SUM(country.Population - sum_cities.city_population) AS totalNotCity, sum_cities.city_population AS totalCity
 FROM country
 INNER JOIN(
     SELECT country.Code AS code, SUM(city.population) AS city_population
