@@ -2,7 +2,6 @@ package com.napier.sem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ReportUtil {
@@ -20,7 +19,6 @@ public class ReportUtil {
                 result.add(pop);
             }
             resultSet.close();
-            System.out.println(result.size());
             for(Population p : result){
                 p.ToString();
             }
