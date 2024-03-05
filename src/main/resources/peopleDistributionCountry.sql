@@ -4,5 +4,4 @@ FROM (
     FROM country
     LEFT JOIN city ON country.Code = city.CountryCode
     GROUP BY country.Code, country.Name, country.Population
-) AS sum_cities
-ON country.Code = sum_cities.code;
+) AS sum_cities;
