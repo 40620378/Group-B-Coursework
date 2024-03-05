@@ -4,5 +4,5 @@ FROM (
     FROM country
     INNER JOIN city ON country.Code = city.CountryCode
     GROUP BY country.Code
-) AS sum_cities;
-GROUP BY reportName
+) AS sum_cities
+GROUP BY reportName;
