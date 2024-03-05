@@ -13,8 +13,9 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "peopleDistributionCountry.sql", params);
             if (resultSet.next()) {
                 Population pop = new Population();
-                pop.reportName = resultSet.getString("reportName");
-                System.out.println("Report name: " + pop.reportName);
+                //pop.reportName = resultSet.getString("reportName");
+                //System.out.println("Report name: " + pop.reportName);
+                System.out.println("Code:" + resultSet.getString("code"));
                 pop.totalCity = resultSet.getInt("totalCity");
                 System.out.println("Total city:" + pop.totalCity);
                 pop.totalPopulation = resultSet.getInt("totalPopulation");
