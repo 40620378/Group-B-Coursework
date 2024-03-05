@@ -27,14 +27,14 @@ public class SQLUtil {
     public static ResultSet run(Connection connection, String sqlFileName, String[] queryParams){
         ResultSet result = null;
         try{
+            Statement statement = connection.createStatement();
             ClassLoader classLoader = SQLUtil.class.getClassLoader();
             InputStream resourceStream = classLoader.getResourceAsStream(sqlFileName);
             Scanner s = new Scanner(resourceStream).useDelimiter("\\A");
             String query = s.hasNext() ? s.next() : "";
-            PreparedStatement statement = connection.prepareStatement(query);
             for(int i = 0; i < queryParams.length; i++){
-                statement.setString(i + 1, queryParams[i]);
                 System.out.println(queryParams[i]);
+                query = query.replaceFirst("\\?", queryParams[i]);
             }
             result = statement.executeQuery(query);
             System.out.println("Query success");
