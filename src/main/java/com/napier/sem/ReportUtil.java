@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ReportUtil {
-    public void countryCitiesPopulation(Connection connection){
+    public static void countryCitiesPopulation(Connection connection){
         try {
             ArrayList<Population> result = new ArrayList<Population>();
             String[] params = {};

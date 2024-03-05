@@ -17,9 +17,7 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        String[] params = {"ABW"};
-        SQLUtil.run(connection, "peopleDistribution", params);
-        SQLUtil.validate("test.sql");
+        ReportUtil.countryCitiesPopulation(connection);
         connectionManager.disconnect();
     }
 }
