@@ -11,11 +11,10 @@ public class ReportUtil {
             ArrayList<Population> result = new ArrayList<Population>();
             String[] params = {};
             ResultSet resultSet = SQLUtil.run(connection, "peopleDistributionCountry.sql", params);
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 Population pop = new Population();
-                //pop.reportName = resultSet.getString("reportName");
-                //System.out.println("Report name: " + pop.reportName);
-                System.out.println("Code:" + resultSet.getString("code"));
+                pop.reportName = resultSet.getString("reportName");
+                System.out.println("Report name: " + pop.reportName);
                 pop.totalCity = resultSet.getInt("totalCity");
                 System.out.println("Total city:" + pop.totalCity);
                 pop.totalPopulation = resultSet.getInt("totalPopulation");
@@ -24,6 +23,7 @@ public class ReportUtil {
                 System.out.println("Not city:" + pop.totalNotCity);
                 result.add(pop);
             }
+            resultSet.close();
             System.out.println(result.size());
             for(Population p : result){
                 p.toString();
