@@ -19,6 +19,7 @@ public class ReportUtil {
                 pop.totalPopulation = resultSet.getInt("totalPopulation");
                 result.add(pop);
             }
+            System.out.println(result.size());
             for(Population p : result){
                 p.toString();
             }
