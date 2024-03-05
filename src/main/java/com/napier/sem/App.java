@@ -18,7 +18,7 @@ public class App
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
         String[] params = {"ABW"};
-        SQLUtil.run(connection, "test.sql", params);
+        SQLUtil.run(connection, "peopleDistribution", params);
         SQLUtil.validate("test.sql");
         connectionManager.disconnect();
     }
