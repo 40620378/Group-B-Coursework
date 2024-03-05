@@ -34,6 +34,7 @@ public class SQLUtil {
             PreparedStatement statement = connection.prepareStatement(query);
             for(int i = 0; i < queryParams.length; i++){
                 statement.setString(i + 1, queryParams[i]);
+                System.out.println(queryParams[i]);
             }
             result = statement.executeQuery(query);
             System.out.println("Query success");
