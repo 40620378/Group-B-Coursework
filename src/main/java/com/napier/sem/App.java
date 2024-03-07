@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Entrypoint of program
@@ -17,7 +18,9 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        ReportUtil.countryCitiesPopulation(connection);
+        ArrayList<Population> result = ReportUtil.countryCitiesPopulation(connection);
+        Population firstResult = result.get(0);
+        System.out.println("First result: \n" + firstResult.toString());
         connectionManager.disconnect();
     }
 }

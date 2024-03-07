@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ReportUtil {
-    public static void countryCitiesPopulation(Connection connection){
+    public static ArrayList<Population> countryCitiesPopulation(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
         try {
-            ArrayList<Population> result = new ArrayList<Population>();
             String[] params = {};
             ResultSet resultSet = SQLUtil.run(connection, "peopleDistributionCountry.sql", params);
             while (resultSet.next()) {
@@ -19,13 +19,11 @@ public class ReportUtil {
                 result.add(pop);
             }
             resultSet.close();
-            for(Population p : result){
-                p.ToString();
-            }
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
         }
+        return result;
     }
 }
