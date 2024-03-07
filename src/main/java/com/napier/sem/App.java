@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class App
 {
     /**
-     * Connects and disconnects from database.
+     * Connects to DB and gets result of a report.
      * @param args
      */
     public static void main(String[] args)

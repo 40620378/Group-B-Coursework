@@ -1,5 +1,8 @@
 package com.napier.sem;
 
+/**
+ * Contains columns to be returned from city queries
+ */
 public class City {
     public String name;
     public String country;
