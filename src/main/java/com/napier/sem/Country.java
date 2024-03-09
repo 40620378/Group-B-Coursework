@@ -11,7 +11,7 @@ public class Country {
     public String population;
     public String capital;
     public String ToString() {
-        String result = "Country code: " + code + "Country name: " + name + "Continent: " + continent + "Region: " + region + "Population: " + population + "Capital: " + capital;
+        String result = "Country code: " + code + " Country name: " + name + " Continent: " + continent + " Region: " + region + " Population: " + population + " Capital: " + capital;
         return result;
     }
 }

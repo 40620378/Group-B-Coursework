@@ -9,7 +9,7 @@ public class City {
     public String district;
     public String population;
     public String ToString(){
-        String result = "City: " + name + "Country: " + name + "District: " + district + "Population: " + population;
+        String result = "City: " + name + " Country: " + name + " District: " + district + " Population: " + population;
         return result;
     }
 }

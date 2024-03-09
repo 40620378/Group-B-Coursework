@@ -8,7 +8,7 @@ public class Population {
     public int totalCity;
     public int totalNotCity;
     public String ToString(){
-        String result = "Name: " + reportName + "Population: " + totalPopulation + "City: " + totalCity + "Not City: " + totalNotCity;
+        String result = "Name: " + reportName + " Population: " + totalPopulation + " City: " + totalCity + " Not City: " + totalNotCity;
         return result;
     }
 }
