@@ -20,7 +20,7 @@ public class App
         Connection connection = connectionManager.connect();
         ArrayList<Population> result = ReportUtil.countryCitiesPopulation(connection);
         Population firstResult = result.get(0);
-        System.out.println("First result: \n" + firstResult.toString());
+        System.out.println("First result: \n" + firstResult.ToString());
         connectionManager.disconnect();
     }
 }
