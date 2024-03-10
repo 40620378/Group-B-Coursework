@@ -51,7 +51,8 @@ public class SQLUtil {
      * @param sqlFileName the name of the sql file in the resources directory
      */
 
-    public static void validate(String sqlFileName){
+    public static boolean isValid(String sqlFileName){
+        boolean valid = false;
         try{
             ClassLoader classLoader = SQLUtil.class.getClassLoader();
             InputStream resourceStream = classLoader.getResourceAsStream(sqlFileName);
@@ -59,9 +60,11 @@ public class SQLUtil {
             String query = s.hasNext() ? s.next() : "";
             CCJSqlParserUtil.parse(query);
             System.out.println("SQL validated");
+            valid = true;
         }
         catch (JSQLParserException e) {
             System.out.println("Invalid SQL");
         }
+        return valid;
     }
 }
