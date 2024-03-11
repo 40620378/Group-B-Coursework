@@ -35,6 +35,11 @@ public class ReportUtil {
         return result;
     }
 
+    /**
+     * Generates a report for the countries in a continent sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
     public static ArrayList<Country> continentByPopulation(Connection connection, String continent){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
@@ -59,6 +64,11 @@ public class ReportUtil {
         return result;
     }
 
+    /**
+     * Generates a report for the countries in the world sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
     public static ArrayList<Country> worldByPopulation(Connection connection){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
@@ -82,7 +92,11 @@ public class ReportUtil {
         }
         return result;
     }
-
+    /**
+     * Generates a report for the countries in a region sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
     public static ArrayList<Country> regionByPopulation(Connection connection, String region){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
