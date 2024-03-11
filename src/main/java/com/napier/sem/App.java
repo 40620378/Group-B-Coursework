@@ -18,7 +18,13 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
+        /*
         ArrayList<Population> result = ReportUtil.countryCitiesPopulation(connection);
+        Population firstResult = result.get(0);
+        System.out.println("First result: \n" + firstResult.ToString());
+        connectionManager.disconnect();
+        */
+        ArrayList<Population> result = ReportUtil.topNPopulatedCountries(connection, 3);
         Population firstResult = result.get(0);
         System.out.println("First result: \n" + firstResult.ToString());
         connectionManager.disconnect();

@@ -42,13 +42,13 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountries.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
-                country.code = resultSet.getString("Code")
-                country.name = resultSet.getString("Name")
-                country.continent = resultSet.getString("Continent")
-                country.region = resultSet.getString("Region")
-                country.population = resultSet.getString("Population")
-                country.capital = resultSet.getString("Capital")
-                result.add(country)
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
             }
             resultSet.close();
         }
