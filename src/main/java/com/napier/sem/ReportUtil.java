@@ -122,24 +122,21 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the countries in a region sorted from largest population to smallest.
+     * Generates a report for the capital cities in the world sorted from largest population to smallest.
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Country> capitalWorldByPopulation(Connection connection){
-        ArrayList<Country> result = new ArrayList<Country>();
+    public static ArrayList<CapitalCity> capitalWorldByPopulation(Connection connection){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
         try {
             String[] params = {};
-            ResultSet resultSet = SQLUtil.run(connection, "regionByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "capitalWorldByPopulation.sql", params);
             while (resultSet.next()) {
-                Country country = new Country();
-                country.code = resultSet.getString("Code");
-                country.name = resultSet.getString("Name");
-                country.continent = resultSet.getString("Continent");
-                country.population = resultSet.getString("Population");
-                country.region = resultSet.getString("Region");
-                country.capital = resultSet.getString("Capital");
-                result.add(country);
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
             }
             resultSet.close();
         }
@@ -149,4 +146,57 @@ public class ReportUtil {
         }
         return result;
     }
+
+    /**
+     * Generates a report for the capital cities in a continent sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<CapitalCity> capitalContinentByPopulation(Connection connection, String continent){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {continent};
+            ResultSet resultSet = SQLUtil.run(connection, "capitalContinentByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the capital cities in a region sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<CapitalCity> capitalRegionByPopulation(Connection connection, String region){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {region};
+            ResultSet resultSet = SQLUtil.run(connection, "capitalRegionByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
 }
