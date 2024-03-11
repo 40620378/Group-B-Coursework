@@ -35,11 +35,11 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCountries(Connection connection, int limit){
+    public static ArrayList<Country> topNPopulatedCountriesWorld(Connection connection, int limit){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {Integer.toString(limit)};
-            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountries.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountriesWorld.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
