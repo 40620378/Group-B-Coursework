@@ -34,4 +34,28 @@ public class ReportUtil {
         }
         return result;
     }
+
+    public static ArrayList<Country> topNPopulatedCountries(Connection connection, int limit){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {limit};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountries.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code")
+                country.name = resultSet.getString("Name")
+                country.continent = resultSet.getString("Continent")
+                country.region = resultSet.getString("Region")
+                country.population = resultSet.getString("Population")
+                country.capital = resultSet.getString("Capital")
+                result.add(country)
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 }
