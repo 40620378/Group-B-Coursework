@@ -120,4 +120,33 @@ public class ReportUtil {
         }
         return result;
     }
+
+    /**
+     * Generates a report for the countries in a region sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Country> capitalWorldByPopulation(Connection connection){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "regionByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 }
