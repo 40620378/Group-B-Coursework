@@ -14,7 +14,7 @@ public class City {
      * @return concatenated string of all properties
      */
     public String ToString(){
-        String result = "City: " + name + " Country: " + name + " District: " + district + " Population: " + population;
+        String result = "City: " + name + " Country: " + country + " District: " + district + " Population: " + population;
         return result;
     }
 }
