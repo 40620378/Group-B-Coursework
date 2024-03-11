@@ -59,7 +59,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String contient int limit){
+    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String continent, int limit){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {continent, Integer.toString(limit)};
