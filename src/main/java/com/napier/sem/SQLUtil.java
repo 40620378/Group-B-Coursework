@@ -33,7 +33,6 @@ public class SQLUtil {
             Scanner s = new Scanner(resourceStream).useDelimiter("\\A");
             String query = s.hasNext() ? s.next() : "";
             for(int i = 0; i < queryParams.length; i++){
-                System.out.println(queryParams[i]);
                 query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
             }
             result = statement.executeQuery(query);

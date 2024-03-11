@@ -14,6 +14,7 @@ public class App
      */
     public static void main(String[] args)
     {
+
         System.out.println("Countries App");
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
