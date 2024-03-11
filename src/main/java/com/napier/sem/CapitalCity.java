@@ -6,7 +6,7 @@ public class CapitalCity extends City{
      * @return concatenated string of all properties
      */
     public String ToString(){
-        String result = "City: " + name + " Country: " + name  + " Population: " + population;
+        String result = "City: " + name + " Country: " + country  + " Population: " + population;
         return result;
     }
 }
