@@ -36,7 +36,7 @@ public class SQLUtil {
                 System.out.println(queryParams[i]);
                 query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
             }
-            System.out.println(query)
+            System.out.println(query);
             result = statement.executeQuery(query);
             System.out.println("Query success");
         }
