@@ -24,8 +24,8 @@ public class App
         System.out.println("First result: \n" + firstResult.ToString());
         connectionManager.disconnect();
         */
-        ArrayList<Population> result = ReportUtil.topNPopulatedCountries(connection, 3);
-        Population firstResult = result.get(0);
+        ArrayList<Country> result = ReportUtil.topNPopulatedCountries(connection, 3);
+        Country firstResult = result.get(0);
         System.out.println("First result: \n" + firstResult.ToString());
         connectionManager.disconnect();
     }
