@@ -36,7 +36,7 @@ public class ReportUtil {
     }
 
     public static ArrayList<Country> topNPopulatedCountries(Connection connection, int limit){
-        ArrayList<Population> result = new ArrayList<Population>();
+        ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {limit};
             ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountries.sql", params);
