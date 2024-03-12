@@ -61,7 +61,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("7980230");
         ArrayList<City> resultList = ReportUtil.citiesDistrictByPopulation(con, "param");
         assertEquals(1, resultList.size());
-        String expected = "City Name: Tokyo City Country: JPN City District: Tokyo-to City Population: 7980230";
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -79,7 +79,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("7980230");
         ArrayList<City> resultList = ReportUtil.citiesCountryByPopulation(con, "param");
         assertEquals(1, resultList.size());
-        String expected = "City Name: Tokyo City Country: JPN City District: Tokyo-to City Population: 7980230";
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -97,7 +97,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("7980230");
         ArrayList<City> resultList = ReportUtil.citiesRegionByPopulation(con, "param");
         assertEquals(1, resultList.size());
-        String expected = "City Name: Tokyo City Country: JPN City District: Tokyo-to City Population: 7980230";
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -115,7 +115,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("7980230");
         ArrayList<City> resultList = ReportUtil.citiesContinentByPopulation(con, "param");
         assertEquals(1, resultList.size());
-        String expected = "City Name: Tokyo City Country: JPN City District: Tokyo-to City Population: 7980230";
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -133,7 +133,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("7980230");
         ArrayList<City> resultList = ReportUtil.citiesWorldByPopulation(con);
         assertEquals(1, resultList.size());
-        String expected = "City Name: Tokyo City Country: JPN City District: Tokyo-to City Population: 7980230";
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
