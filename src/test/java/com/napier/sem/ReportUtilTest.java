@@ -138,4 +138,4 @@ public class ReportUtilTest
         String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
         assertEquals(expected, resultList.get(0).ToString());
     }    
-}
+}   
