@@ -308,7 +308,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the cities in a country sorted from largest population to smallest.
+     * Generates a report for the cities in a district sorted from largest population to smallest.
      * @param connection the connection to the database
      * @return
      */
