@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ReportUtilTest
 {
     @Test
-    void countryCitiesPopulation() throws SQLException {
+    void peopleDistributionCountry() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
         Statement stmt = mock(Statement.class);

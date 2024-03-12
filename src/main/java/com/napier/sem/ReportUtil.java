@@ -12,7 +12,7 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> countryCitiesPopulation(Connection connection){
+    public static ArrayList<Population> peopleDistributionCountry(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {};
