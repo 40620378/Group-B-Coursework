@@ -333,5 +333,32 @@ public class ReportUtil {
         return result;
     }
 
+    /**
+     * Generates a report for the N populated cities in the world where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> NcityWorldPopulation(Connection connection){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
 
 }
