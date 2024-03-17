@@ -20,9 +20,9 @@ public class App
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
         ArrayList<City> result = ReportUtil.NcityWorldPopulation(connection);
-        if(result.size() > 0){
-            City firstResult = result.get(0);
-            System.out.println("First result: \n" + firstResult.ToString());
+         if(result.size() > 0){
+            for (int i = 0; i < result.size; i++)
+            System.out.println(i+ ". result: \n" + result[i].ToString());
         }
         else{
             System.out.println("Result empty");
