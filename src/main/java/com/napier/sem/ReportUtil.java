@@ -338,10 +338,10 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<City> NcityWorldPopulation(Connection connection, Integer N){
+    public static ArrayList<City> NcityWorldPopulation(Connection connection, String N){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            Integer[] params = {N};
+            String[] params = {N};
             ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
