@@ -19,10 +19,10 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        ArrayList<CapitalCity> result = ReportUtil.capitalContinentByPopulation(connection,"Antarctica");
+        ArrayList<City> result = ReportUtil.NcityWorldPopulation(connection,"Antarctica");
         if(result.size() > 0){
-            CapitalCity firstResult = result.get(0);
-            System.out.println("First result: \n" + firstResult.ToString());
+            for (int i = 0; i < result.size; i++)
+            System.out.println(i+ " result: \n" + result[i].ToString());
         }
         else{
             System.out.println("Result empty");
