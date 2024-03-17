@@ -22,7 +22,8 @@ public class App
         ArrayList<City> result = ReportUtil.NcityWorldPopulation(connection);
          if(result.size() > 0){
             for (int i = 0; i < result.size(); i++){
-                System.out.println(i+ ". result: \n" + result[i].ToString());
+                City Result = result.get(0);
+                System.out.println(i+ ". result: \n" + Result.ToString());
             }
         }
         else{
