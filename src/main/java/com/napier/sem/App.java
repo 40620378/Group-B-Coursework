@@ -21,8 +21,9 @@ public class App
         Connection connection = connectionManager.connect();
         ArrayList<City> result = ReportUtil.NcityWorldPopulation(connection);
          if(result.size() > 0){
-            for (int i = 0; i < result.size(); i++)
-            System.out.println(i+ ". result: \n" + result[i].ToString());
+            for (int i = 0; i < result.size(); i++){
+                System.out.println(i+ ". result: \n" + result[i].ToString());
+            }
         }
         else{
             System.out.println("Result empty");
