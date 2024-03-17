@@ -342,7 +342,7 @@ public class ReportUtil {
         ArrayList<City> result = new ArrayList<City>();
         try {
             String[] params = {"8"};
-            ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params.replaceAll("\'", ""));
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
