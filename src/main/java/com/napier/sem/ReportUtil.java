@@ -341,7 +341,7 @@ public class ReportUtil {
     public static ArrayList<City> NcityWorldPopulation(Connection connection){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            Integer[] params = {8};
+            String[] params = {\"8\"};
             ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
