@@ -338,7 +338,7 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<City> NcityWorldPopulation(Connection connection, Integer N){
+    public static ArrayList<City> NcityWorldPopulation(Connection connection, String N){
         ArrayList<City> result = new ArrayList<City>();
         try {
             Integer[] params = {N};
