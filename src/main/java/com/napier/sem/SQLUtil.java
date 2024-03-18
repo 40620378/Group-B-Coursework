@@ -25,12 +25,7 @@ public class SQLUtil {
             Scanner s = new Scanner(resourceStream).useDelimiter("\\A");
             String query = s.hasNext() ? s.next() : "";
             for(int i = 0; i < queryParams.length; i++){
-                if(isInt(queryParams[i])){
-                    query = query.replaceFirst("\\?", queryParams[i]);
-                }
-                else {
-                    query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
-                }
+                query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
             }
             result = statement.executeQuery(query);
             System.out.println("Query success");
@@ -62,17 +57,5 @@ public class SQLUtil {
             System.out.println("Invalid SQL");
         }
         return valid;
-    }
-
-    private static boolean isInt(String value){
-        boolean result;
-        try{
-            Integer.parseInt(value);
-            result = true;
-        }
-        catch(Exception e){
-            result = false;
-        }
-        return result;
     }
 }
