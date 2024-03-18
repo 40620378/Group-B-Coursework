@@ -1,5 +1,5 @@
 DECLARE @N AS int 
-SET @N = ?
+SET @N = 12
 
 SELECT city.Name AS Name, city.Population AS Population, country.Name AS Country, city.District AS District
 FROM country
