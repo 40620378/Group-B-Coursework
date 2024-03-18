@@ -37,6 +37,7 @@ public class ReportUtil {
     /**
      * Generates a report for the countries in a continent sorted from largest population to smallest.
      * @param connection the connection to the database
+     * @param continent the specified continent
      * @return
      */
     public static ArrayList<Country> continentByPopulation(Connection connection, String continent){
@@ -94,6 +95,7 @@ public class ReportUtil {
     /**
      * Generates a report for the countries in a region sorted from largest population to smallest.
      * @param connection the connection to the database
+     * @param region the specified region
      * @return
      */
     public static ArrayList<Country> regionByPopulation(Connection connection, String region){
@@ -149,6 +151,7 @@ public class ReportUtil {
     /**
      * Generates a report for the capital cities in a continent sorted from largest population to smallest.
      * @param connection the connection to the database
+     * @param continent the specified continent
      * @return
      */
     public static ArrayList<CapitalCity> capitalContinentByPopulation(Connection connection, String continent){
@@ -175,6 +178,7 @@ public class ReportUtil {
     /**
      * Generates a report for the capital cities in a region sorted from largest population to smallest.
      * @param connection the connection to the database
+     * @param region the specified region
      * @return
      */
     public static ArrayList<CapitalCity> capitalRegionByPopulation(Connection connection, String region){
