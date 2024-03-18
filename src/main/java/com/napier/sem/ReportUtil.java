@@ -341,7 +341,7 @@ public class ReportUtil {
     public static ArrayList<City> NcityWorldPopulation(Connection connection, String N){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {N.replaceAll("z", "baa")};
+            String[] params = {N}; //.replaceAll("z", "baa")
             ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
