@@ -1,4 +1,4 @@
-DECLARE @N int = CAST(? AS int);
+DECLARE @N int = CAST(? AS int)
 
 SELECT city.Name AS Name, city.Population AS Population, country.Name AS Country, city.District AS District
 FROM country
