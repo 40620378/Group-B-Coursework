@@ -2,5 +2,5 @@ SELECT country.Code AS code, country.Name AS Name, country.Continent AS continen
 FROM country
 INNER JOIN city ON country.Capital = city.ID
 WHERE country.Continent = ?
-ORDER BY country.population DESC
+ORDER BY city.population DESC
 LIMIT ?;
