@@ -23,8 +23,8 @@ public class ReportUtil {
                 pop.totalCity = resultSet.getInt("totalCity");
                 pop.totalPopulation = resultSet.getInt("totalPopulation");
                 pop.totalNotCity = resultSet.getInt("totalNotCity");
-                pop.percentageCity = (pop.totalCity / 100 * pop.totalPopulation);
-                pop.percentageNotCity = (pop.percentageNotCity / 100 * pop.totalPopulation);
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
                 result.add(pop);
             }
             resultSet.close();
@@ -362,5 +362,10 @@ public class ReportUtil {
         return result;
     }
 
+    private static float roundedPercentage(int value, int total){
+        float result = ((float)value) / total * 100;
+        result = ((float)Math.round(result * 100)) / 100;
+        return result;
+    }
 
 }
