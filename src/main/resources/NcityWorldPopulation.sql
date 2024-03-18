@@ -1,5 +1,4 @@
-DECLARE @userInput AS int;
-SET @userInput = 12;
+DECLARE @userInput INT = 12
 
 SELECT city.Name AS Name, city.Population AS Population, country.Name AS Country, city.District AS District
 FROM country
