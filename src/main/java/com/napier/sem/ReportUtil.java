@@ -340,11 +340,11 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<City> NcityWorldPopulation(Connection connection, String N){
+    public static ArrayList<City> nCityWorldPopulation(Connection connection, String N){
         ArrayList<City> result = new ArrayList<City>();
         try {
             String[] params = {N}; //.replaceAll("z", "baa")
-            ResultSet resultSet = SQLUtil.run(connection, "NcityWorldPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "nCityWorldPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
