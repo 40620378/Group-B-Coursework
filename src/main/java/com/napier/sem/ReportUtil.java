@@ -23,6 +23,8 @@ public class ReportUtil {
                 pop.totalCity = resultSet.getInt("totalCity");
                 pop.totalPopulation = resultSet.getInt("totalPopulation");
                 pop.totalNotCity = resultSet.getInt("totalNotCity");
+                pop.percentageCity = (pop.totalCity / 100 * pop.totalPopulation);
+                pop.percentageNotCity = (pop.percentageNotCity / 100 * pop.totalPopulation);
                 result.add(pop);
             }
             resultSet.close();
