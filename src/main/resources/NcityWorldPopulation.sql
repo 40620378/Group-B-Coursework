@@ -1,4 +1,4 @@
-SET @userInput := 12;
+SET @userInput = 12;
 
 SELECT city.Name AS Name, city.Population AS Population, country.Name AS Country, city.District AS District
 FROM country
