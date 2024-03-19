@@ -396,7 +396,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String continent, String Nt){
+    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String continent, String N){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {continent, N};
@@ -497,7 +497,7 @@ public class ReportUtil {
         try {
             String[] params = {region, N};
             ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCapitalCitiesRegion.sql", params);
-            while (resultSet.next(region, N)) {
+            while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
                 country.name = resultSet.getString("Name");
