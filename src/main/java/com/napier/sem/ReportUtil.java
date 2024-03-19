@@ -372,4 +372,147 @@ public class ReportUtil {
         return result;
     }
 
+    public static ArrayList<Country> topNPopulatedCountriesWorld(Connection connection, int limit){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {Integer.toString(limit)};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountriesWorld.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String continent, int limit){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {continent, Integer.toString(limit)};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountriesContinent.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    public static ArrayList<Country> topNPopulatedCountriesRegion(Connection connection, String region, int limit){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {region, Integer.toString(limit)};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCountriesRegion.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    public static ArrayList<Country> topNPopulatedCapitalCitiesWorld(Connection connection, String region, int limit){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {region, Integer.toString(limit)};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCapitalCitiesWorld.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    public static ArrayList<Country> topNPopulatedCapitalCitiesContinent(Connection connection, String region, int limit){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {region, Integer.toString(limit)};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCapitalCitiesContinent.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    public static ArrayList<Country> topNPopulatedCapitalCitiesRegion(Connection connection, String region, int limit){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {region, Integer.toString(limit)};
+            ResultSet resultSet = SQLUtil.run(connection, "topNPopulatedCapitalCitiesRegion.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.region = resultSet.getString("Region");
+                country.population = resultSet.getString("Population");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }           
 }
