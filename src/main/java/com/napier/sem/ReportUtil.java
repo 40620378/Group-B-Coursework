@@ -37,6 +37,35 @@ public class ReportUtil {
     }
 
     /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a region.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> peopleDistributionRegion(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "peopleDistributionRegion.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = resultSet.getString("reportName");
+                pop.totalCity = resultSet.getInt("totalCity");
+                pop.totalPopulation = resultSet.getInt("totalPopulation");
+                pop.totalNotCity = resultSet.getInt("totalNotCity");
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
      * Generates a report for the countries in a continent sorted from largest population to smallest.
      * @param connection the connection to the database
      * @return

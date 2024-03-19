@@ -29,6 +29,24 @@ public class ReportUtilTest
     }
 
     @Test
+    void peopleDistributionRegion() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Test");
+        Mockito.when(result.getInt("totalCity")).thenReturn(1234);
+        Mockito.when(result.getInt("totalPopulation")).thenReturn(123444);
+        Mockito.when(result.getInt("totalNotCity")).thenReturn(122210);
+        ArrayList<Population> resultList = ReportUtil.peopleDistributionRegion(con);
+        assertEquals(1, resultList.size());
+        String expected = "Name: Test Population: 123444 City: 1234(1.0%) Not City: 122210(99.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
     void continentByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
