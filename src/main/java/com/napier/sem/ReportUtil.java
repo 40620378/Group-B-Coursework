@@ -372,7 +372,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCountriesWorld(Connection connection, int limit){
+    public static ArrayList<Country> topNPopulatedCountriesWorld(Connection connection, String N){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {Integer.toString(limit)};
@@ -396,7 +396,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String continent, int limit){
+    public static ArrayList<Country> topNPopulatedCountriesContinent(Connection connection, String continent, String Nt){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {continent, Integer.toString(limit)};
@@ -420,7 +420,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCountriesRegion(Connection connection, String region, int limit){
+    public static ArrayList<Country> topNPopulatedCountriesRegion(Connection connection, String region, String N){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {region, Integer.toString(limit)};
@@ -444,7 +444,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCapitalCitiesWorld(Connection connection, String region, int limit){
+    public static ArrayList<Country> topNPopulatedCapitalCitiesWorld(Connection connection, String N){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {region, Integer.toString(limit)};
@@ -468,7 +468,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCapitalCitiesContinent(Connection connection, String region, int limit){
+    public static ArrayList<Country> topNPopulatedCapitalCitiesContinent(Connection connection, String continent, String N){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {region, Integer.toString(limit)};
@@ -492,7 +492,7 @@ public class ReportUtil {
         return result;
     }
 
-    public static ArrayList<Country> topNPopulatedCapitalCitiesRegion(Connection connection, String region, int limit){
+    public static ArrayList<Country> topNPopulatedCapitalCitiesRegion(Connection connection, String region, String N){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {region, Integer.toString(limit)};
