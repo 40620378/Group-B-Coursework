@@ -19,7 +19,7 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        ArrayList<Country> result = ReportUtil.topNPopulatedCountriesWorld(connection, "3");
+        ArrayList<Country> result = ReportUtil.topNPopulatedCountriesWorld(connection, "20");
          if(result.size() > 0){
             for (int i = 0; i < result.size(); i++){
                 Country Result = result.get(0);
