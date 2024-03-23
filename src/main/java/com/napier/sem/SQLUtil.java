@@ -25,11 +25,16 @@ public class SQLUtil {
             Scanner s = new Scanner(resourceStream).useDelimiter("\\A");
             String query = s.hasNext() ? s.next() : "";
             for(int i = 0; i < queryParams.length; i++){
-                if(isInt(queryParams[i]) || queryParams[i].contains("#")){
+                if(isInt(queryParams[i])){
                     query = query.replaceFirst("\\?", queryParams[i]);
                 }
-                else {
-                    query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
+                else{
+                    if(queryParams[i].contains("#")){
+                        query = query.replaceFirst("\\?", queryParams[i].replace("#", ""));
+                    }
+                    else{
+                        query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
+                    }
                 }
             }
             result = statement.executeQuery(query);
