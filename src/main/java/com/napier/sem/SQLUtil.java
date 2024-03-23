@@ -28,13 +28,11 @@ public class SQLUtil {
                 if(isInt(queryParams[i])){
                     query = query.replaceFirst("\\?", queryParams[i]);
                 }
+                else if(queryParams[i].contains("#")){
+                    query = query.replaceFirst("\\?", queryParams[i].replace("#", ""));
+                }
                 else{
-                    if(queryParams[i].contains("#")){
-                        query = query.replaceFirst("\\?", queryParams[i].replace("#", ""));
-                    }
-                    else{
-                        query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
-                    }
+                    query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
                 }
             }
             result = statement.executeQuery(query);
