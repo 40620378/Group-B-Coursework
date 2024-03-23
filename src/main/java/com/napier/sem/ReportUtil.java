@@ -239,8 +239,8 @@ public class ReportUtil {
     public static ArrayList<City> citiesContinentByPopulation(Connection connection, String continent){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {continent};
-            ResultSet resultSet = SQLUtil.run(connection, "citiesContinentByPopulation.sql", params);
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
@@ -266,8 +266,8 @@ public class ReportUtil {
     public static ArrayList<City> citiesRegionByPopulation(Connection connection, String region){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {region};
-            ResultSet resultSet = SQLUtil.run(connection, "citiesRegionByPopulation.sql", params);
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
@@ -293,8 +293,8 @@ public class ReportUtil {
     public static ArrayList<City> citiesCountryByPopulation(Connection connection, String country){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {country};
-            ResultSet resultSet = SQLUtil.run(connection, "citiesCountryByPopulation.sql", params);
+            String[] params = {"#Name", country};
+            ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
@@ -320,8 +320,8 @@ public class ReportUtil {
     public static ArrayList<City> citiesDistrictByPopulation(Connection connection, String district){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {district};
-            ResultSet resultSet = SQLUtil.run(connection, "citiesDistrictByPopulation.sql", params);
+            String[] params = {"#District", district};
+            ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");

@@ -28,7 +28,10 @@ public class SQLUtil {
                 if(isInt(queryParams[i])){
                     query = query.replaceFirst("\\?", queryParams[i]);
                 }
-                else {
+                else if(queryParams[i].contains("#")){
+                    query = query.replaceFirst("\\?", queryParams[i].replace("#", ""));
+                }
+                else{
                     query = query.replaceFirst("\\?", "'" + queryParams[i] + "'");
                 }
             }

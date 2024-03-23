@@ -3,4 +3,3 @@ FROM country
 INNER JOIN city ON country.Code = city.CountryCode
 WHERE country.? = ?
 ORDER BY city.Population DESC
-
