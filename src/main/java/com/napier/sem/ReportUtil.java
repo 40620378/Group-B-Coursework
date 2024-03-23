@@ -240,7 +240,7 @@ public class ReportUtil {
         ArrayList<City> result = new ArrayList<City>();
         try {
             String[] params = {continent};
-            ResultSet resultSet = SQLUtil.run(connection, "citiesContinentByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
