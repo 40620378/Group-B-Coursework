@@ -22,7 +22,7 @@ public class App
         ArrayList<City> result = ReportUtil.citiesContinentByPopulation(connection, "North America");
          if(result.size() > 0){
             for (int i = 1; i < result.size(); i++){
-                City Result = result.get(0);
+                City Result = result.get(i);
                 System.out.println(i+ ". result: " + Result.ToString());
             }
         }
