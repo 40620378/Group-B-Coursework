@@ -231,7 +231,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the capital cities in a continent sorted from largest population to smallest.
+     * Generates a report for the N populated capital cities in a continent where N is provided by the user.
      * @param connection the connection to the database
      * @param continent the specified continent
      * @return
@@ -240,7 +240,7 @@ public class ReportUtil {
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
         try {
             String[] params = {"#Continent", continent, N};
-            ResultSet resultSet = SQLUtil.run(connection, "capitalContinentByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "nCapitalByPopulation.sql", params);
             while (resultSet.next()) {
                 CapitalCity capitalCity = new CapitalCity();
                 capitalCity.country = resultSet.getString("Name");
