@@ -366,6 +366,11 @@ public class ReportUtil {
         return result;
     }
 
+    /**
+     * Generates a report for the cities in a region sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
     public static ArrayList<City> nCitiesContinentByPopulation(Connection connection, String continent, String N){
         ArrayList<City> result = new ArrayList<City>();
         try {
