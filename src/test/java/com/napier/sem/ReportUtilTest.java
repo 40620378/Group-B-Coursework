@@ -167,7 +167,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Name")).thenReturn("Belgium");
         Mockito.when(result.getString("Population")).thenReturn("10239000");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
-        ArrayList<CapitalCity> resultList = ReportUtil.nCapitalContinentByPopulation(con, "param");
+        ArrayList<CapitalCity> resultList = ReportUtil.nCapitalContinentByPopulation(con, "param", "13");
         assertEquals(1, resultList.size());
         String expected = "City: Brussels Country: Belgium Population: 10239000";
         assertEquals(expected, resultList.get(0).ToString());
@@ -184,7 +184,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("Name")).thenReturn("Belgium");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
         Mockito.when(result.getString("Population")).thenReturn("10239000");
-        ArrayList<CapitalCity> resultList = ReportUtil.nCapitalRegionByPopulation(con, "param");
+        ArrayList<CapitalCity> resultList = ReportUtil.nCapitalRegionByPopulation(con, "param", "13");
         assertEquals(1, resultList.size());
         String expected = "City: Brussels Country: Belgium Population: 10239000";
         assertEquals(expected, resultList.get(0).ToString());
