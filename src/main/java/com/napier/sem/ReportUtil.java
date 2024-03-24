@@ -213,7 +213,7 @@ public class ReportUtil {
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
         try {
             String[] params = {N};
-            ResultSet resultSet = SQLUtil.run(connection, "capitalWorldByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "nCapitalWorldByPopulation.sql", params);
             while (resultSet.next()) {
                 CapitalCity capitalCity = new CapitalCity();
                 capitalCity.country = resultSet.getString("Name");
