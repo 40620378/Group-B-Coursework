@@ -186,8 +186,8 @@ public class ReportUtil {
     public static ArrayList<CapitalCity> capitalRegionByPopulation(Connection connection, String region){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
         try {
-            String[] params = {region};
-            ResultSet resultSet = SQLUtil.run(connection, "capitalRegionByPopulation.sql", params);
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "capitalByPopulation.sql", params);
             while (resultSet.next()) {
                 CapitalCity capitalCity = new CapitalCity();
                 capitalCity.country = resultSet.getString("Name");

@@ -19,7 +19,7 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        ArrayList<CapitalCity> result = ReportUtil.capitalContinentByPopulation(connection, "Europe");
+        ArrayList<CapitalCity> result = ReportUtil.capitalRegionByPopulation(connection, "Caribbean");
          if(result.size() > 0){
             for (int i = 0; i < result.size(); i++){
                 CapitalCity Result = result.get(i);
