@@ -139,7 +139,7 @@ public class ReportUtilTest
         assertEquals(expected, resultList.get(0).ToString());
     }
 
-    @Test //ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+    @Test
     void nCapitalWorldByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
@@ -148,7 +148,7 @@ public class ReportUtilTest
         Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("Name")).thenReturn("Belgium");
-        Mockito.when(result.getString("Population")).thenReturn("10239000");
+        Mockito.when(result.getString("Population")).thenReturn("102390000");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
         ArrayList<CapitalCity> resultList = ReportUtil.nCapitalWorldByPopulation(con, "13");
         assertEquals(1, resultList.size());
