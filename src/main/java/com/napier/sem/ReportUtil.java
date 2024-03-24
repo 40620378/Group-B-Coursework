@@ -231,6 +231,33 @@ public class ReportUtil {
     }
 
     /**
+     * Generates a report for the capital cities in a continent sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @param continent the specified continent
+     * @return
+     */
+    public static ArrayList<CapitalCity> nCapitalContinentByPopulation(Connection connection, String continent, String N){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {"#Continent", continent, N};
+            ResultSet resultSet = SQLUtil.run(connection, "capitalContinentByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
      * Generates a report for the cities in the world sorted from largest population to smallest.
      * @param connection the connection to the database
      * @return
