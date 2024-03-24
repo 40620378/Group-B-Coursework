@@ -367,7 +367,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the cities in a region sorted from largest population to smallest.
+     * Generates a report for the N populated cities in a continent where N is provided by the user.
      * @param connection the connection to the database
      * @return
      */
@@ -394,7 +394,7 @@ public class ReportUtil {
     }
 
      /**
-     * Generates a report for the cities in a region sorted from largest population to smallest.
+     * Generates a report for the N populated cities in a region where N is provided by the user.
      * @param connection the connection to the database
      * @return
      */
@@ -421,7 +421,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the cities in a country sorted from largest population to smallest.
+     * Generates a report for the N populated cities in a country where N is provided by the user.
      * @param connection the connection to the database
      * @return
      */
@@ -448,7 +448,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the cities in a country sorted from largest population to smallest.
+     * Generates a report for the N populated cities in a district where N is provided by the user.
      * @param connection the connection to the database
      * @return
      */
