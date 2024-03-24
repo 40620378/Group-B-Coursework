@@ -420,6 +420,33 @@ public class ReportUtil {
         return result;
     }
 
+    /**
+     * Generates a report for the cities in a country sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> nCitiesCountryByPopulation(Connection connection, String country, String N){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {"#Name", country, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesByPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
     private static float roundedPercentage(int value, int total){
         float result = ((float)value) / total * 100;
         result = ((float)Math.round(result * 100)) / 100;
