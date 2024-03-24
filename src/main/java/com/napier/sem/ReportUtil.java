@@ -480,4 +480,28 @@ public class ReportUtil {
         return result;
     }
 
+
+    //test
+    public static ArrayList<City> testDistrict(Connection connection, String district){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {district};
+            ResultSet resultSet = SQLUtil.run(connection, "districtTest.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
 }
