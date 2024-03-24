@@ -297,4 +297,76 @@ public class ReportUtilTest
         String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
+
+    @Test
+    void nCitiesContinentByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Name")).thenReturn("Tokyo");
+        Mockito.when(result.getString("Country")).thenReturn("JPN");
+        Mockito.when(result.getString("District")).thenReturn("Tokyo-to");
+        Mockito.when(result.getString("Population")).thenReturn("7980230");
+        ArrayList<City> resultList = ReportUtil.nCitiesContinentByPopulation(con, "param", "12");
+        assertEquals(1, resultList.size());
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCitiesRegionByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Name")).thenReturn("Tokyo");
+        Mockito.when(result.getString("Country")).thenReturn("JPN");
+        Mockito.when(result.getString("District")).thenReturn("Tokyo-to");
+        Mockito.when(result.getString("Population")).thenReturn("7980230");
+        ArrayList<City> resultList = ReportUtil.nCitiesRegionByPopulation(con, "param", "9");
+        assertEquals(1, resultList.size());
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCitiesCountryByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Name")).thenReturn("Tokyo");
+        Mockito.when(result.getString("Country")).thenReturn("JPN");
+        Mockito.when(result.getString("District")).thenReturn("Tokyo-to");
+        Mockito.when(result.getString("Population")).thenReturn("7980230");
+        ArrayList<City> resultList = ReportUtil.nCitiesCountryByPopulation(con, "param", "11");
+        assertEquals(1, resultList.size());
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCitiesDistrictByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Name")).thenReturn("Tokyo");
+        Mockito.when(result.getString("Country")).thenReturn("JPN");
+        Mockito.when(result.getString("District")).thenReturn("Tokyo-to");
+        Mockito.when(result.getString("Population")).thenReturn("7980230");
+        ArrayList<City> resultList = ReportUtil.nCitiesDistrictByPopulation(con, "param", "7");
+        assertEquals(1, resultList.size());
+        String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
 }
