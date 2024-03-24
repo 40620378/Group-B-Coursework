@@ -263,7 +263,7 @@ public class ReportUtil {
      * @param region the specified region
      * @return
      */
-    public static ArrayList<CapitalCity> capitalRegionByPopulation(Connection connection, String region, String N){
+    public static ArrayList<CapitalCity> nCapitalRegionByPopulation(Connection connection, String region, String N){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
         try {
             String[] params = {"#Region", region, N};
