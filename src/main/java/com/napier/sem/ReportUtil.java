@@ -321,7 +321,7 @@ public class ReportUtil {
         ArrayList<City> result = new ArrayList<City>();
         try {
             String[] params = {"#District", district};
-            ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "districtTest.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
