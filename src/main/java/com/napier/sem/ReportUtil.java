@@ -205,7 +205,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the capital cities in the world sorted from largest population to smallest.
+     * Generates a report for the N populated capital cities in the world where N is provided by the user.
      * @param connection the connection to the database
      * @return
      */
