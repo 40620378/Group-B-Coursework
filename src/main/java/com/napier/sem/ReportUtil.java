@@ -205,6 +205,32 @@ public class ReportUtil {
     }
 
     /**
+     * Generates a report for the capital cities in the world sorted from largest population to smallest.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<CapitalCity> nCapitalWorldByPopulation(Connection connection, String N){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {N};
+            ResultSet resultSet = SQLUtil.run(connection, "capitalWorldByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
      * Generates a report for the cities in the world sorted from largest population to smallest.
      * @param connection the connection to the database
      * @return
