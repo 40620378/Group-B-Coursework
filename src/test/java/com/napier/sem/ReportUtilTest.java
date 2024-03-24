@@ -148,9 +148,43 @@ public class ReportUtilTest
         Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("Name")).thenReturn("Belgium");
-        Mockito.when(result.getString("Population")).thenReturn("102390000");
+        Mockito.when(result.getString("Population")).thenReturn("10239000");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
         ArrayList<CapitalCity> resultList = ReportUtil.nCapitalWorldByPopulation(con, "13");
+        assertEquals(1, resultList.size());
+        String expected = "City: Brussels Country: Belgium Population: 10239000";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCapitalContinentByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Name")).thenReturn("Belgium");
+        Mockito.when(result.getString("Population")).thenReturn("10239000");
+        Mockito.when(result.getString("Capital")).thenReturn("Brussels");
+        ArrayList<CapitalCity> resultList = ReportUtil.nCapitalContinentByPopulation(con, "param");
+        assertEquals(1, resultList.size());
+        String expected = "City: Brussels Country: Belgium Population: 10239000";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCapitalRegionByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Name")).thenReturn("Belgium");
+        Mockito.when(result.getString("Capital")).thenReturn("Brussels");
+        Mockito.when(result.getString("Population")).thenReturn("10239000");
+        ArrayList<CapitalCity> resultList = ReportUtil.nCapitalRegionByPopulation(con, "param");
         assertEquals(1, resultList.size());
         String expected = "City: Brussels Country: Belgium Population: 10239000";
         assertEquals(expected, resultList.get(0).ToString());
