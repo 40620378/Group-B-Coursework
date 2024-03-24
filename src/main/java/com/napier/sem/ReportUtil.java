@@ -159,8 +159,8 @@ public class ReportUtil {
     public static ArrayList<CapitalCity> capitalContinentByPopulation(Connection connection, String continent){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
         try {
-            String[] params = {continent};
-            ResultSet resultSet = SQLUtil.run(connection, "capitalContinentByPopulation.sql", params);
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "capitalByPopulation.sql", params);
             while (resultSet.next()) {
                 CapitalCity capitalCity = new CapitalCity();
                 capitalCity.country = resultSet.getString("Name");
