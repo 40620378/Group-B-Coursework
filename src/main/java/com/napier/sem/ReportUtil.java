@@ -205,6 +205,86 @@ public class ReportUtil {
     }
 
     /**
+     * Generates a report for the N populated capital cities in the world where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<CapitalCity> nCapitalWorldByPopulation(Connection connection, String N){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCapitalWorldByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated capital cities in a continent where N is provided by the user.
+     * @param connection the connection to the database
+     * @param continent the specified continent
+     * @return
+     */
+    public static ArrayList<CapitalCity> nCapitalContinentByPopulation(Connection connection, String continent, String N){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {"#Continent", continent, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCapitalByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated capital cities in a region where N is provided by the user.
+     * @param connection the connection to the database
+     * @param region the specified region
+     * @return
+     */
+    public static ArrayList<CapitalCity> nCapitalRegionByPopulation(Connection connection, String region, String N){
+        ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
+        try {
+            String[] params = {"#Region", region, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCapitalByPopulation.sql", params);
+            while (resultSet.next()) {
+                CapitalCity capitalCity = new CapitalCity();
+                capitalCity.country = resultSet.getString("Name");
+                capitalCity.population = resultSet.getString("Population");
+                capitalCity.name = resultSet.getString("Capital");
+                result.add(capitalCity);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
      * Generates a report for the cities in the world sorted from largest population to smallest.
      * @param connection the connection to the database
      * @return
@@ -239,7 +319,7 @@ public class ReportUtil {
     public static ArrayList<City> citiesContinentByPopulation(Connection connection, String continent){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {"#Continent", continent};
+            String[] params = {"#country", "#Continent", continent};
             ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
@@ -266,7 +346,7 @@ public class ReportUtil {
     public static ArrayList<City> citiesRegionByPopulation(Connection connection, String region){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {"#Region", region};
+            String[] params = {"#country", "#Region", region};
             ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
@@ -293,7 +373,7 @@ public class ReportUtil {
     public static ArrayList<City> citiesCountryByPopulation(Connection connection, String country){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {"#Name", country};
+            String[] params = {"#country", "#Name", country};
             ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
@@ -320,7 +400,7 @@ public class ReportUtil {
     public static ArrayList<City> citiesDistrictByPopulation(Connection connection, String district){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {"#District", district};
+            String[] params = {"#city", "#District", district};
             ResultSet resultSet = SQLUtil.run(connection, "citiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
@@ -344,11 +424,119 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<City> nCityWorldPopulation(Connection connection, String N){
+    public static ArrayList<City> nCitiesWorldByPopulation(Connection connection, String N){
         ArrayList<City> result = new ArrayList<City>();
         try {
-            String[] params = {N}; //.replaceAll("z", "baa")
-            ResultSet resultSet = SQLUtil.run(connection, "nCityWorldPopulation.sql", params);
+            String[] params = {N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesWorldByPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated cities in a continent where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> nCitiesContinentByPopulation(Connection connection, String continent, String N){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {"#country", "#Continent", continent, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesByPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+     /**
+     * Generates a report for the N populated cities in a region where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> nCitiesRegionByPopulation(Connection connection, String region, String N){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {"#country", "#Region", region, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesByPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated cities in a country where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> nCitiesCountryByPopulation(Connection connection, String country, String N){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {"#country", "#Name", country, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesByPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated cities in a district where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> nCitiesDistrictByPopulation(Connection connection, String district, String N){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {"#city", "#District", district, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesByPopulation.sql", params);
             while (resultSet.next()) {
                 City city = new City();
                 city.country = resultSet.getString("Country");
@@ -371,5 +559,4 @@ public class ReportUtil {
         result = ((float)Math.round(result * 100)) / 100;
         return result;
     }
-
 }
