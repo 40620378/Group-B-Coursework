@@ -45,8 +45,8 @@ public class ReportUtil {
     public static ArrayList<Country> continentByPopulation(Connection connection, String continent){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
-            String[] params = {continent};
-            ResultSet resultSet = SQLUtil.run(connection, "continentByPopulation.sql", params);
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "countryByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -75,7 +75,7 @@ public class ReportUtil {
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {};
-            ResultSet resultSet = SQLUtil.run(connection, "worldByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "countryWorldByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -103,8 +103,8 @@ public class ReportUtil {
     public static ArrayList<Country> regionByPopulation(Connection connection, String region){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
-            String[] params = {region};
-            ResultSet resultSet = SQLUtil.run(connection, "regionByPopulation.sql", params);
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "countryByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
