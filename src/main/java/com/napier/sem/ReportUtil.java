@@ -71,7 +71,7 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Country> worldByPopulation(Connection connection){
+    public static ArrayList<Country> countryWorldByPopulation(Connection connection){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {};
@@ -100,7 +100,7 @@ public class ReportUtil {
      * @param region the specified region
      * @return
      */
-    public static ArrayList<Country> regionByPopulation(Connection connection, String region){
+    public static ArrayList<Country> countryRegionByPopulation(Connection connection, String region){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {"#Region", region};
