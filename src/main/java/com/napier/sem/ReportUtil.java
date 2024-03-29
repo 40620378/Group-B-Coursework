@@ -126,7 +126,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the countries in the world sorted from largest population to smallest.
+     * Generates a report for the N populated countries in the world where N is provided by the user.
      * @param connection the connection to the database
      * @return
      */
@@ -155,7 +155,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the countries in a continent sorted from largest population to smallest.
+     * Generates a report for the N populated countries in a continent where N is provided by the user.
      * @param connection the connection to the database
      * @param continent the specified continent
      * @return
@@ -185,7 +185,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the countries in a region sorted from largest population to smallest.
+     * Generates a report for the N populated countries in a region where N is provided by the user.
      * @param connection the connection to the database
      * @param region the specified region
      * @return
