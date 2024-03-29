@@ -1,5 +1,3 @@
-SELECT country.Name AS Name, country.Continent AS Continent, country.Population AS Population, country.Code AS Code, country.Region AS Region, city.Name AS Capital
+SELECT Name, Continent, Population, Code, Region, Capital
 FROM country
-INNER JOIN city ON country.Code = city.CountryCode
 ORDER BY Population DESC;
-
