@@ -42,7 +42,7 @@ public class ReportUtil {
      * @param continent the specified continent
      * @return
      */
-    public static ArrayList<Country> continentByPopulation(Connection connection, String continent){
+    public static ArrayList<Country> countryContinentByPopulation(Connection connection, String continent){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {"#Continent", continent};
