@@ -2,4 +2,4 @@ SELECT country.Name AS Name, country.Continent AS Continent, country.Population 
 FROM country
 INNER JOIN city ON country.Code = city.CountryCode
 WHERE country.? = ?
-ORDER BY Population DESC;
+ORDER BY country.Population DESC;
