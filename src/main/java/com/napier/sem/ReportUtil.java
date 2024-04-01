@@ -2,6 +2,7 @@ package com.napier.sem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.math.BigInteger;
 
 /**
  * Contains methods to generate reports based on queries located in the resources directory.
