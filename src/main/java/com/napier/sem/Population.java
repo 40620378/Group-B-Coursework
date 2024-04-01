@@ -1,10 +1,11 @@
 package com.napier.sem;
+import java.math.BigInteger;
 /**
  * Contains columns to be returned from population queries
  */
 public class Population {
     public String reportName;
-    public int totalPopulation;
+    public BigInteger totalPopulation;
     public int totalCity;
     public int totalNotCity;
 
