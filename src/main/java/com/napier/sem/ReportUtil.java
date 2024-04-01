@@ -662,7 +662,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "populationWorld.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                pop.totalPopulation = resultSet.getInt("totalPopulation");
+                pop.totalPopulation = resultSet.getBigInteger("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
