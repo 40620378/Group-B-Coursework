@@ -4146,7 +4146,7 @@ CREATE TABLE `country` (
   `Region` char(26) NOT NULL DEFAULT '',
   `SurfaceArea` decimal(10,2) NOT NULL DEFAULT '0.00',
   `IndepYear` smallint DEFAULT NULL,
-  `Population` int NOT NULL DEFAULT '0',
+  `Population` bigint NOT NULL DEFAULT '0',
   `LifeExpectancy` decimal(3,1) DEFAULT NULL,
   `GNP` decimal(10,2) DEFAULT NULL,
   `GNPOld` decimal(10,2) DEFAULT NULL,
