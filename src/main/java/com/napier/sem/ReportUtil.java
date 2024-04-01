@@ -649,4 +649,28 @@ public class ReportUtil {
         result = ((float)Math.round(result * 100)) / 100;
         return result;
     }
+
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> populationWorld(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "populationWorld.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.totalPopulation = resultSet.getInt("totalPopulation");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 }
