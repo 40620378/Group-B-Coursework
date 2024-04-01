@@ -662,7 +662,8 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "populationWorld.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                pop.totalPopulation = resultSet.getBigInteger("totalPopulation");
+                // pop.totalPopulation = resultSet.getBigInteger("totalPopulation");
+                pop.totalPopulation(new BigInteger(Integer.valueOf(rs.getInt("User_Id")).toString())); //https://coderanch.com/t/547309/databases/Mapping-BigInteger-java-object-ResultSet
                 result.add(pop);
             }
             resultSet.close();
