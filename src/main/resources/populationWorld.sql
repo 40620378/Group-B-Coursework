@@ -1,2 +1,2 @@
-SELECT CAST((SUM(population)) AS BIGINT) AS totalPopulation
+SELECT CONVERT(bigint, SUM(population)) AS totalPopulation
 FROM country;
