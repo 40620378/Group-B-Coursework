@@ -4,7 +4,7 @@ package com.napier.sem;
  */
 public class Population {
     public String reportName;
-    public biginteger totalPopulation;
+    public int totalPopulation;
     public int totalCity;
     public int totalNotCity;
 
