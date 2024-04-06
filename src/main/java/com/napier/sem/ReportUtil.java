@@ -707,7 +707,7 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationRegion(Connection connection, String continent){
+    public static ArrayList<Population> totalPopulationRegion(Connection connection, String region){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {"#Region", region};
