@@ -686,7 +686,7 @@ public class ReportUtil {
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {"#Continent", continent};
-            ResultSet resultSet = SQLUtil.run(connection, "totalPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
@@ -711,7 +711,7 @@ public class ReportUtil {
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {"#Region", region};
-            ResultSet resultSet = SQLUtil.run(connection, "totalPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
@@ -736,7 +736,32 @@ public class ReportUtil {
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {"#Name", country};
-            ResultSet resultSet = SQLUtil.run(connection, "totalPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a district
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationDistrict(Connection connection, String district){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#District", district};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
