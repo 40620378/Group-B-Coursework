@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.math.BigInteger;
+import java.math.BigDecimal;
 
 /**
  * Contains methods to generate reports based on queries located in the resources directory.
