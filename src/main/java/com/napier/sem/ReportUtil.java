@@ -653,17 +653,43 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * Generates a report for the total population of the world
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> populationWorld(Connection connection){
+    public static ArrayList<Population> totalPopulationWorld(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {};
-            ResultSet resultSet = SQLUtil.run(connection, "populationWorld.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a continent
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationContinent(Connection connection, String continent){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulation.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = resultSet.getString("reportName");
                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
                 pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
                 result.add(pop);
