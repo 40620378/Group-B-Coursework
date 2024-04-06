@@ -25,7 +25,7 @@ public class ReportUtil {
                 pop.totalCity = resultSet.getInt("totalCity");
                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
                 pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-                int intTotalPopulation = pop.totalPopulation.getInt();
+                int intTotalPopulation = decTotalPop.intValue();
                 pop.totalNotCity = resultSet.getInt("totalNotCity");
                 pop.percentageCity = roundedPercentage(pop.totalCity, intTotalPopulation);
                 pop.percentageNotCity = roundedPercentage(pop.totalNotCity, intTotalPopulation);
