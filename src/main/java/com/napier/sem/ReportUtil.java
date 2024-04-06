@@ -689,7 +689,6 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulation.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                pop.reportName = resultSet.getString("reportName");
                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
                 pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
                 result.add(pop);
