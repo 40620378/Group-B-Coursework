@@ -701,4 +701,29 @@ public class ReportUtil {
         }
         return result;
     }
+
+    /**
+     * Generates a report for the total population of a region
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationRegion(Connection connection, String continent){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulation.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 }
