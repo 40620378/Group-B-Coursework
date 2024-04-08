@@ -565,7 +565,7 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> languagePercentage(Connection connection){
+    public static ArrayList<Language> languagePercentage(Connection connection){
         ArrayList<Language> result = new ArrayList<Language>();
         try {
             String[] params = {};
