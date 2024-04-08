@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  */
 public class Language {
     public String countryCode;
-    public String name;
+    public String Language;
     public String IsOfficial;
     public BigDecimal percentageCountry;
     /**
@@ -14,7 +14,7 @@ public class Language {
      * @return concatenated string of all properties
      */
     public String ToString() {
-        String result = "Country code: " + countryCode + " Language: " + name + " IsOfficial: " + IsOfficial + " Percentage: " + percentageCountry;
+        String result = "Country code: " + countryCode + " Language: " + Language + " IsOfficial: " + IsOfficial + " Percentage: " + percentageCountry;
         return result;
     }
 }
