@@ -566,7 +566,7 @@ public class ReportUtil {
      * @return
      */
     public static ArrayList<Population> languagePercentage(Connection connection){
-        ArrayList<Population> result = new ArrayList<Population>();
+        ArrayList<Language> result = new ArrayList<Language>();
         try {
             String[] params = {};
             ResultSet resultSet = SQLUtil.run(connection, "languagePercentage.sql", params);
