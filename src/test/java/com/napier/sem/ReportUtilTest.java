@@ -29,7 +29,7 @@ public class ReportUtilTest
     }
 
     @Test
-    void continentByPopulation() throws SQLException {
+    void countryContinentByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
         Statement stmt = mock(Statement.class);
@@ -42,14 +42,14 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("10239000");
         Mockito.when(result.getString("Region")).thenReturn("Western Europe");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
-        ArrayList<Country> resultList = ReportUtil.continentByPopulation(con, "param");
+        ArrayList<Country> resultList = ReportUtil.countryContinentByPopulation(con, "param");
         assertEquals(1, resultList.size());
         String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
     @Test
-    void worldByPopulation() throws SQLException {
+    void countryWorldByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
         Statement stmt = mock(Statement.class);
@@ -62,14 +62,14 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("10239000");
         Mockito.when(result.getString("Region")).thenReturn("Western Europe");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
-        ArrayList<Country> resultList = ReportUtil.worldByPopulation(con);
+        ArrayList<Country> resultList = ReportUtil.countryWorldByPopulation(con);
         assertEquals(1, resultList.size());
         String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
     @Test
-    void regionByPopulation() throws SQLException {
+    void countryRegionByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
         Statement stmt = mock(Statement.class);
@@ -82,7 +82,67 @@ public class ReportUtilTest
         Mockito.when(result.getString("Population")).thenReturn("10239000");
         Mockito.when(result.getString("Region")).thenReturn("Western Europe");
         Mockito.when(result.getString("Capital")).thenReturn("Brussels");
-        ArrayList<Country> resultList = ReportUtil.regionByPopulation(con, "param");
+        ArrayList<Country> resultList = ReportUtil.countryRegionByPopulation(con, "param");
+        assertEquals(1, resultList.size());
+        String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCountryWorldByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Code")).thenReturn("BEL");
+        Mockito.when(result.getString("Name")).thenReturn("Belgium");
+        Mockito.when(result.getString("Continent")).thenReturn("Europe");
+        Mockito.when(result.getString("Population")).thenReturn("10239000");
+        Mockito.when(result.getString("Region")).thenReturn("Western Europe");
+        Mockito.when(result.getString("Capital")).thenReturn("Brussels");
+        ArrayList<Country> resultList = ReportUtil.nCountryWorldByPopulation(con, "10");
+        assertEquals(1, resultList.size());
+        String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCountryContinentByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Code")).thenReturn("BEL");
+        Mockito.when(result.getString("Name")).thenReturn("Belgium");
+        Mockito.when(result.getString("Continent")).thenReturn("Europe");
+        Mockito.when(result.getString("Population")).thenReturn("10239000");
+        Mockito.when(result.getString("Region")).thenReturn("Western Europe");
+        Mockito.when(result.getString("Capital")).thenReturn("Brussels");
+        ArrayList<Country> resultList = ReportUtil.nCountryContinentByPopulation(con, "param", "11");
+        assertEquals(1, resultList.size());
+        String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void nCountryRegionByPopulation() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("Code")).thenReturn("BEL");
+        Mockito.when(result.getString("Name")).thenReturn("Belgium");
+        Mockito.when(result.getString("Continent")).thenReturn("Europe");
+        Mockito.when(result.getString("Population")).thenReturn("10239000");
+        Mockito.when(result.getString("Region")).thenReturn("Western Europe");
+        Mockito.when(result.getString("Capital")).thenReturn("Brussels");
+        ArrayList<Country> resultList = ReportUtil.nCountryRegionByPopulation(con, "param", "8");
         assertEquals(1, resultList.size());
         String expected = "Country code: BEL Country name: Belgium Continent: Europe Region: Western Europe Population: 10239000 Capital: Brussels";
         assertEquals(expected, resultList.get(0).ToString());

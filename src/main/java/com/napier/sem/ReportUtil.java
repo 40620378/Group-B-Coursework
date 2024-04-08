@@ -42,11 +42,11 @@ public class ReportUtil {
      * @param continent the specified continent
      * @return
      */
-    public static ArrayList<Country> continentByPopulation(Connection connection, String continent){
+    public static ArrayList<Country> countryContinentByPopulation(Connection connection, String continent){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
-            String[] params = {continent};
-            ResultSet resultSet = SQLUtil.run(connection, "continentByPopulation.sql", params);
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "countryByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -71,11 +71,11 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Country> worldByPopulation(Connection connection){
+    public static ArrayList<Country> countryWorldByPopulation(Connection connection){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {};
-            ResultSet resultSet = SQLUtil.run(connection, "worldByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "countryWorldByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -94,17 +94,107 @@ public class ReportUtil {
         }
         return result;
     }
+
     /**
      * Generates a report for the countries in a region sorted from largest population to smallest.
      * @param connection the connection to the database
      * @param region the specified region
      * @return
      */
-    public static ArrayList<Country> regionByPopulation(Connection connection, String region){
+    public static ArrayList<Country> countryRegionByPopulation(Connection connection, String region){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
-            String[] params = {region};
-            ResultSet resultSet = SQLUtil.run(connection, "regionByPopulation.sql", params);
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "countryByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated countries in the world where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Country> nCountryWorldByPopulation(Connection connection, String N){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCountryWorldByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated countries in a continent where N is provided by the user.
+     * @param connection the connection to the database
+     * @param continent the specified continent
+     * @return
+     */
+    public static ArrayList<Country> nCountryContinentByPopulation(Connection connection, String continent, String N){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {"#Continent", continent, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCountryByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated countries in a region where N is provided by the user.
+     * @param connection the connection to the database
+     * @param region the specified region
+     * @return
+     */
+    public static ArrayList<Country> nCountryRegionByPopulation(Connection connection, String region, String N){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {"#Region", region, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCountryByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
