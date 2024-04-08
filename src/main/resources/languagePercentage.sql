@@ -1,4 +1,5 @@
-SELECT Language--, IsOfficial, Percentage
+SELECT Language
+--, IsOfficial, Percentage
 -- , AS noOfSpeakers, As percentWorldPop
 FROM countrylanguage
 RIGHT JOIN city ON countrylanguage.CountryCode = city.CountryCode
