@@ -576,7 +576,7 @@ public class ReportUtil {
                 lan.name = resultSet.getString("name");
                 lan.IsOfficial = resultSet.getString("IsOfficial");
                 lan.percentageCountry = resultSet.getBigDecimal("percentageCountry");
-                result.add(pop);
+                result.add(lan);
             }
             resultSet.close();
         }
