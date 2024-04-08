@@ -3,6 +3,6 @@ FROM (
     SELECT country.Continent AS reportName, country.Population AS population, SUM(city.population) AS city_population
     FROM country
     LEFT JOIN city ON country.Code = city.CountryCode
-    GROUP BY reportName, population, city_population
+    GROUP BY reportName, population
 ) AS sum_cities
-GROUP BY reportName, population, city_population;
+GROUP BY reportName, population;
