@@ -573,7 +573,7 @@ public class ReportUtil {
             while (resultSet.next()) {
                 Language lan = new Language();
                 lan.countryCode = resultSet.getString("countryCode");
-                lan.name = resultSet.getString("name");
+                lan.name = resultSet.getString("Language");
                 lan.IsOfficial = resultSet.getString("IsOfficial");
                 lan.percentageCountry = resultSet.getBigDecimal("percentageCountry");
                 result.add(lan);
