@@ -575,7 +575,7 @@ public class ReportUtil {
                 lan.countryCode = resultSet.getString("countryCode");
                 lan.name = resultSet.getString("name");
                 lan.IsOfficial = resultSet.getString("IsOfficial");
-                lan.percentageCountry = resultSet.getBigDecimal("percentageCountry");
+                lan.percentageCountry = resultSet.getBigDecimal("Percentage");
                 result.add(lan);
             }
             resultSet.close();
