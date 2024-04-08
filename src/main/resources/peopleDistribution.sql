@@ -10,4 +10,4 @@ FROM(
     GROUP BY reportName, population, city_population, code
 ) AS sum_countries
 INNER JOIN country ON sum_countries.code = country.Code
-GROUP BY country.Continent, sum_countries.totalPopulation;
+GROUP BY country.Continent, sum_countries.totalPopulation, sum_countries.totalCity, sum_countries.totalNotCity;
