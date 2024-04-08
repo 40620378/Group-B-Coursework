@@ -2,6 +2,7 @@ package com.napier.sem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.math.BigDecimal;
 
 /**
  * Contains methods to generate reports based on queries located in the resources directory.
@@ -557,6 +558,59 @@ public class ReportUtil {
     private static float roundedPercentage(int value, int total){
         float result = ((float)value) / total * 100;
         result = ((float)Math.round(result * 100)) / 100;
+        return result;
+    }
+
+    /**
+     * Generates a report for the number of people who speak each language
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<City> nCitiesCountryByPopulation(Connection connection, String country, String N){
+        ArrayList<City> result = new ArrayList<City>();
+        try {
+            String[] params = {"#country", "#Name", country, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCitiesByPopulation.sql", params);
+            while (resultSet.next()) {
+                City city = new City();
+                city.country = resultSet.getString("Country");
+                city.population = resultSet.getString("Population");
+                city.name = resultSet.getString("Name");
+                city.district = resultSet.getString("District");
+                result.add(city);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+    /**
+     * Generates a report for the nuber of people who speak a language
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> languagePercentage(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "languagePercentage.sql", params);
+            while (resultSet.next()) {
+                Language lan = new Language
+                lan.countryCode = resultSet.getString("countryCode");
+                lan.name = resultSet.getString("name");
+                lan.IsOfficial = resultSet.getString("IsOfficial");
+                lan.percentageCountry = resultSet.getBigDecimal("percentageCountry");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
         return result;
     }
 }
