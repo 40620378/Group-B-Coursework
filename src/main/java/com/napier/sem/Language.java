@@ -14,7 +14,7 @@ public class Language {
      * @return concatenated string of all properties
      */
     public String ToString() {
-        String result = "Country code: " + countryCode + " Language: " + name + " IsOfficial: " + IsOfficial + " Percentage: " + Percentage;
+        String result = "Country code: " + countryCode + " Language: " + name + " IsOfficial: " + IsOfficial + " Percentage: " + percentageCountry;
         return result;
     }
 }
