@@ -7,7 +7,7 @@ FROM(
         LEFT JOIN city ON country.Code = city.CountryCode
         GROUP BY country.Code, country.Name, country.Population
     ) AS sum_cities
-    GROUP BY reportName, population, city_population, code;
+    GROUP BY reportName, population, city_population, code
 ) AS sum_countries
 INNER JOIN country ON sum_countries.code = country.Code
-GROUP BY country.Continent
+GROUP BY country.Continent;
