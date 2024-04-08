@@ -1,4 +1,4 @@
-SELECT country.Continent, sum_countries.totalPopulation, sum_countries.totalCity, sum_countries.totalNotCity
+SELECT country.Continent AS reportName, sum_countries.totalPopulation, sum_countries.totalCity, sum_countries.totalNotCity
 FROM(
     SELECT sum_cities.countryName, sum_cities.population AS totalPopulation, SUM(sum_cities.population - sum_cities.city_population) AS totalNotCity, city_population AS totalCity, code
     FROM (
