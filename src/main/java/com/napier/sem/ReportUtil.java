@@ -883,5 +883,6 @@ public class ReportUtil {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
         }
+        return result;
     }
 }
