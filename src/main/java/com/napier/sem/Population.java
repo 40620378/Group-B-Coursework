@@ -6,8 +6,8 @@ import java.math.BigInteger;
 public class Population {
     public String reportName;
     public long totalPopulation;
-    public int totalCity;
-    public int totalNotCity;
+    public long totalCity;
+    public long totalNotCity;
 
     public float percentageCity;
 
