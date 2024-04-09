@@ -530,9 +530,41 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("United Kingdom");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(59623400L);
-        ArrayList<Population> resultList = ReportUtil.totalPopulationRegion(con, "United Kingdom");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationCountry(con, "United Kingdom");
         assertEquals(1, resultList.size());
         String expected = "Name: United Kingdom Population: 59623400 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationDistrict() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Scotland");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(1429620L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationDistrict(con, "Scotland");
+        assertEquals(1, resultList.size());
+        String expected = "Name: United Kingdom Population: 1429620 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationCity() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Edinburgh");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(450180L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationCity(con, "Edinburgh");
+        assertEquals(1, resultList.size());
+        String expected = "Name: United Kingdom Population: 450180 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 }
