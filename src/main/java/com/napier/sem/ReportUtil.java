@@ -704,7 +704,7 @@ public class ReportUtil {
         return result;
     }
 
-    private static float roundedPercentage(double value, long total){
+    private static float roundedPercentage(long value, long total){
         double result = ((double)value) / total * 100;
         result = ((double)Math.round(result * 100)) / 100;
         return result;
