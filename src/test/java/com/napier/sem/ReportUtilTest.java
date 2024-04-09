@@ -582,3 +582,4 @@ public class ReportUtilTest
         assertEquals(expected, resultList.get(0).ToString());
     }
 }
+
