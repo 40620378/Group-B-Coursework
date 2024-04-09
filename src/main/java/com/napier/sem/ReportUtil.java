@@ -822,6 +822,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
+                pop.reportName = district;
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
