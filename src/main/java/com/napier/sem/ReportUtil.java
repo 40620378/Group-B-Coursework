@@ -574,7 +574,7 @@ public class ReportUtil {
                 Language lan = new Language();
                 lan.Language = resultSet.getString("Language");
                 lan.noOfSpeakers = resultSet.getInt("noOfSpeakers");
-                lan.percentWorldPop = resultSet.getFloat("percentWorldPop");
+                lan.percentWorldPop = resultSet.getDouble("percentWorldPop");
                 result.add(lan);
             }
             resultSet.close();

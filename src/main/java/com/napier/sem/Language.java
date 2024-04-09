@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class Language {
     public String Language;
     public int noOfSpeakers;
-    public float percentWorldPop;
+    public double percentWorldPop;
 
     /**
      * Returns a string report containing all object values
