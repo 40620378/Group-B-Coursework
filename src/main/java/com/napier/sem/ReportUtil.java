@@ -722,7 +722,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                pop.reportName = "World Population";
+                pop.reportName = "World";
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
