@@ -21,7 +21,7 @@ public class ReportUtilTest
         Mockito.when(result.getString("reportName")).thenReturn("Aruba");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(103000L);
         Mockito.when(result.getLong("totalCity")).thenReturn(29034L);
-        Mockito.when(result.getInt("totalNotCity")).thenReturn(73966L);
+        Mockito.when(result.getLong("totalNotCity")).thenReturn(73966L);
         Mockito.when(result.getFloat("percentageCity")).thenReturn((float)28.19);
         Mockito.when(result.getFloat("percentageNotCity")).thenReturn((float)71.81);
         ArrayList<Population> resultList = ReportUtil.peopleDistributionCountry(con);
