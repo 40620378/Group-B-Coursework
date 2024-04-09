@@ -38,10 +38,44 @@ public class ReportUtil {
         return result;
     }
 
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * @param connection the connection to the database
+     * @return
+     */
     public static ArrayList<Population> peopleDistributionContinent(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = resultSet.getString("reportName");
+                pop.totalCity = resultSet.getLong("totalCity");
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                pop.totalNotCity = resultSet.getLong("totalNotCity");
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> peopleDistributionRegion(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Region", "#Region"};
             ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
