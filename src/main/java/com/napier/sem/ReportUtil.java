@@ -572,11 +572,9 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "languagePercentage.sql", params);
             while (resultSet.next()) {
                 Language lan = new Language();
-                // lan.countryCode = resultSet.getString("CountryCode");
                 lan.Language = resultSet.getString("Language");
                 lan.noOfSpeakers = resultSet.getInt("noOfSpeakers");
-                // lan.IsOfficial = resultSet.getString("IsOfficial");
-                // lan.Percentage = resultSet.getBigDecimal("Percentage");
+                lan.percentWorldPop = resultSet.getFloat("percentWorldPop")
                 result.add(lan);
             }
             resultSet.close();

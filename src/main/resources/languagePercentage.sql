@@ -1,4 +1,4 @@
-SELECT Language, SUM((country.Population / 100) * countrylanguage.Percentage) AS noOfSpeakers
+SELECT Language, SUM((country.Population / 100) * countrylanguage.Percentage) AS noOfSpeakers, ((noOfSpeakers / SUM(population)) * 100) AS percentWorldPop
 FROM countrylanguage
 INNER JOIN country ON countrylanguage.CountryCode = country.Code
 WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')

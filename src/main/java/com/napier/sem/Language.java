@@ -8,6 +8,7 @@ public class Language {
     // public String countryCode;
     public String Language;
     public int noOfSpeakers;
+    public float percentWorldPop
     // public String IsOfficial;
     // public BigDecimal Percentage;
     /**
