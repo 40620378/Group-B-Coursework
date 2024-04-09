@@ -10,23 +10,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 public class ReportUtilTest
 {
-    // @Test
-    // void peopleDistributionCountry() throws SQLException {
-    //     Connection con = mock(Connection.class);
-    //     ResultSet result = mock(ResultSet.class);
-    //     Statement stmt = mock(Statement.class);
-    //     Mockito.when(con.createStatement()).thenReturn(stmt);
-    //     Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
-    //     Mockito.when(result.next()).thenReturn(true).thenReturn(false);
-    //     Mockito.when(result.getString("reportName")).thenReturn("Aruba");
-    //     Mockito.when(result.getInt("totalPopulation")).thenReturn(103000);
-    //     Mockito.when(result.getInt("totalCity")).thenReturn(29034);
-    //     Mockito.when(result.getInt("totalNotCity")).thenReturn(73966);
-    //     ArrayList<Population> resultList = ReportUtil.peopleDistributionCountry(con);
-    //     assertEquals(1, resultList.size());
-    //     String expected = "Name: Aruba Population: 103000 City: 29034(28.19%) Not City: 73966(71.81%)";
-    //     assertEquals(expected, resultList.get(0).ToString());
-    // }
+    @Test
+    void peopleDistributionCountry() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Aruba");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(103000);
+        Mockito.when(result.getLong("totalCity")).thenReturn(29034);
+        Mockito.when(result.getInt("totalNotCity")).thenReturn(73966);
+        Mockito.when(result.getFloat("percentageCity")).thenReturn(28.19);
+        Mockito.when(result.getFloat("percentageNotCity")).thenReturn(71.81);
+        ArrayList<Population> resultList = ReportUtil.peopleDistributionCountry(con);
+        assertEquals(1, resultList.size());
+        String expected = "Name: Aruba Population: 103000 City: 29034(28.19%) Not City: 73966(71.81%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
 
     @Test
     void countryContinentByPopulation() throws SQLException {
