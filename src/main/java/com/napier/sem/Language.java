@@ -5,12 +5,10 @@ import java.math.BigDecimal;
  * Contains columns to be returned from language queries
  */
 public class Language {
-    // public String countryCode;
     public String Language;
     public int noOfSpeakers;
     public float percentWorldPop;
-    // public String IsOfficial;
-    // public BigDecimal Percentage;
+
     /**
      * Returns a string report containing all object values
      * @return concatenated string of all properties
