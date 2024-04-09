@@ -17,8 +17,7 @@ public class Language {
      */
     public String ToString() {
         // String result = "Country code: " + countryCode + " Language: " + Language + " IsOfficial: " + IsOfficial + " Percentage: " + Percentage;
-        String result = "Language: " + Language + "noOfSpeakers" + noOfSpeakers + "percentWorldPop" + percentWorldPop;
-
+        String result = "Language: " + Language + " noOfSpeakers:" + noOfSpeakers + " percentWorldPop:" + percentWorldPop;
         return result;
     }
 }
