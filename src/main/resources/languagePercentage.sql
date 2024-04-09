@@ -1,8 +1,8 @@
 SELECT Language
 FROM countrylanguage
-RIGHT JOIN city ON countrylanguage.CountryCode = city.CountryCode
+INNER JOIN country ON countrylanguage.CountryCode = country.Code
 WHERE Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')
-GROUP BY Language
+GROUP BY Language;
 -- ORDER BY noOfSpeakers;
 -- IsOfficial, Percentage
 -- AS noOfSpeakers, As percentWorldPop
