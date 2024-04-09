@@ -530,7 +530,7 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("United Kingdom");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(59623400L);
-        ArrayList<Population> resultList = ReportUtil.totalPopulationRegion(con, "Caribbean");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationRegion(con, "United Kingdom");
         assertEquals(1, resultList.size());
         String expected = "Name: United Kingdom Population: 59623400 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
