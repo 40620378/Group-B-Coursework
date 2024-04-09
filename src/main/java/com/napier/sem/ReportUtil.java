@@ -717,8 +717,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
@@ -742,8 +741,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
@@ -767,8 +765,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
@@ -792,8 +789,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
@@ -817,8 +813,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
@@ -842,8 +837,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
             resultSet.close();
