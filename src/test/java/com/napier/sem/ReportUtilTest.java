@@ -548,7 +548,7 @@ public class ReportUtilTest
         Mockito.when(result.getLong("totalPopulation")).thenReturn(1429620L);
         ArrayList<Population> resultList = ReportUtil.totalPopulationDistrict(con, "Scotland");
         assertEquals(1, resultList.size());
-        String expected = "Name: United Kingdom Population: 1429620 City: 0(0.0%) Not City: 0(0.0%)";
+        String expected = "Name: Scotland Population: 1429620 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -564,7 +564,7 @@ public class ReportUtilTest
         Mockito.when(result.getLong("totalPopulation")).thenReturn(450180L);
         ArrayList<Population> resultList = ReportUtil.totalPopulationCity(con, "Edinburgh");
         assertEquals(1, resultList.size());
-        String expected = "Name: United Kingdom Population: 450180 City: 0(0.0%) Not City: 0(0.0%)";
+        String expected = "Name: Edinburgh Population: 450180 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 }
