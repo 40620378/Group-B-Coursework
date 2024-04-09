@@ -8,8 +8,8 @@ public class Population {
     public long totalPopulation;
     public long totalCity;
     public long totalNotCity;
-    public double percentageCity;
-    public double percentageNotCity;
+    public float percentageCity;
+    public float percentageNotCity;
 
     /**
      * Returns a string report containing all object values
