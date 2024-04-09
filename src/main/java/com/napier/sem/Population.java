@@ -5,7 +5,8 @@ import java.math.BigInteger;
  */
 public class Population {
     public String reportName;
-    public BigInteger totalPopulation;
+    // public BigInteger totalPopulation;
+    public double totalPopulation;
     public int totalCity;
     public int totalNotCity;
 

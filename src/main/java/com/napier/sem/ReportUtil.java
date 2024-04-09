@@ -39,11 +39,36 @@ public class ReportUtil {
         }
         return result;
     }
-    /**
-     * Generates a report for the overall population as well as those that live in a city and don't within a continent.
-     * @param connection the connection to the database
-     * @return
-     */
+    // /**
+    //  * Generates a report for the overall population as well as those that live in a city and don't within a continent.
+    //  * @param connection the connection to the database
+    //  * @return
+    //  */
+    // public static ArrayList<Population> peopleDistributionContinent(Connection connection){
+    //     ArrayList<Population> result = new ArrayList<Population>();
+    //     try {
+    //         String[] params = {};
+    //         ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+    //         while (resultSet.next()) {
+    //             Population pop = new Population();
+    //             pop.reportName = resultSet.getString("reportName");
+    //             pop.totalCity = resultSet.getInt("totalCity");
+    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+    //             pop.totalNotCity = resultSet.getInt("totalNotCity");
+    //             pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation.intValue());
+    //             pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation.intValue());
+    //             result.add(pop);
+    //         }
+    //         resultSet.close();
+    //     }
+    //     catch(Exception e) {
+    //         System.out.println(e.getMessage());
+    //         System.out.println("Failed to get population details");
+    //     }
+    //     return result;
+    // }
+
     public static ArrayList<Population> peopleDistributionContinent(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
@@ -53,11 +78,10 @@ public class ReportUtil {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
                 pop.totalCity = resultSet.getInt("totalCity");
-                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalPopulation = resultSet.getDouble("totalPopulation");
                 pop.totalNotCity = resultSet.getInt("totalNotCity");
-                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation.intValue());
-                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation.intValue());
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
                 result.add(pop);
             }
             resultSet.close();
