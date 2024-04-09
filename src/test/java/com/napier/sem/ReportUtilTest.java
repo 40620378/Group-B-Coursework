@@ -471,4 +471,19 @@ public class ReportUtilTest
         String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
+
+    // @Test
+    // void totalPopulationWorld() throws SQLException {
+    //     Connection con = mock(Connection.class);
+    //     ResultSet result = mock(ResultSet.class);
+    //     Statement stmt = mock(Statement.class);
+    //     Mockito.when(con.createStatement()).thenReturn(stmt);
+    //     Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+    //     Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+    //     Mockito.when(result.getLong("totalPopulation")).thenReturn(482993000L);
+    //     ArrayList<Population> resultList = ReportUtil.totalPopulationWorld(con);
+    //     assertEquals(1, resultList.size());
+    //     String expected = "Name: North America Population: 482993000 City: 168250381(34.83%) Not City: 314742619(65.17%)";
+    //     assertEquals(expected, resultList.get(0).ToString());
+    // }
 }
