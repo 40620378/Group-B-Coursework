@@ -5,83 +5,30 @@ import java.util.ArrayList;
 import java.math.BigInteger;
 import java.math.BigDecimal;
 
-// /**
-//  * Contains methods to generate reports based on queries located in the resources directory.
-//  */
-// public class ReportUtil {
-//     /**
-//      * Generates a report for the overall population as well as those that live in a city and don't within a country.
-//      * @param connection the connection to the database
-//      * @return
-//      */
-//     public static ArrayList<Population> peopleDistributionCountry(Connection connection){
-//         ArrayList<Population> result = new ArrayList<Population>();
-//         try {
-//             String[] params = {};
-//             ResultSet resultSet = SQLUtil.run(connection, "peopleDistributionCountry.sql", params);
-//             while (resultSet.next()) {
-//                 Population pop = new Population();
-//                 pop.reportName = resultSet.getString("reportName");
-//                 pop.totalCity = resultSet.getInt("totalCity");
-//                 BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-//                 pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-//                 int intTotalPopulation = decTotalPop.intValue();
-//                 pop.totalNotCity = resultSet.getInt("totalNotCity");
-//                 pop.percentageCity = roundedPercentage(pop.totalCity, intTotalPopulation);
-//                 pop.percentageNotCity = roundedPercentage(pop.totalNotCity, intTotalPopulation);
-//                 result.add(pop);
-//             }
-//             resultSet.close();
-//         }
-//         catch(Exception e) {
-//             System.out.println(e.getMessage());
-//             System.out.println("Failed to get population details");
-//         }
-//         return result;
-//     }
-    // /**
-    //  * Generates a report for the overall population as well as those that live in a city and don't within a continent.
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> peopleDistributionContinent(Connection connection){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {};
-    //         ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             pop.reportName = resultSet.getString("reportName");
-    //             pop.totalCity = resultSet.getInt("totalCity");
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             pop.totalNotCity = resultSet.getInt("totalNotCity");
-    //             pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation.intValue());
-    //             pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation.intValue());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
-
-    public static ArrayList<Population> peopleDistributionContinent(Connection connection){
+/**
+ * Contains methods to generate reports based on queries located in the resources directory.
+ */
+public class ReportUtil {
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> peopleDistributionCountry(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
             String[] params = {};
-            ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "peopleDistributionCountry.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
                 pop.totalCity = resultSet.getInt("totalCity");
-                pop.totalPopulation = resultSet.getDouble("totalPopulation");
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                int intTotalPopulation = decTotalPop.intValue();
                 pop.totalNotCity = resultSet.getInt("totalNotCity");
-                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
-                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
+                pop.percentageCity = roundedPercentage(pop.totalCity, intTotalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, intTotalPopulation);
                 result.add(pop);
             }
             resultSet.close();
@@ -92,6 +39,59 @@ import java.math.BigDecimal;
         }
         return result;
     }
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a continent.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> peopleDistributionContinent(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = resultSet.getString("reportName");
+                pop.totalCity = resultSet.getInt("totalCity");
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                pop.totalNotCity = resultSet.getInt("totalNotCity");
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation.intValue());
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation.intValue());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    // public static ArrayList<Population> peopleDistributionContinent(Connection connection){
+    //     ArrayList<Population> result = new ArrayList<Population>();
+    //     try {
+    //         String[] params = {};
+    //         ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+    //         while (resultSet.next()) {
+    //             Population pop = new Population();
+    //             pop.reportName = resultSet.getString("reportName");
+    //             pop.totalCity = resultSet.getInt("totalCity");
+    //             pop.totalPopulation = resultSet.getDouble("totalPopulation");
+    //             pop.totalNotCity = resultSet.getInt("totalNotCity");
+    //             pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+    //             pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
+    //             result.add(pop);
+    //         }
+    //         resultSet.close();
+    //     }
+    //     catch(Exception e) {
+    //         System.out.println(e.getMessage());
+    //         System.out.println("Failed to get population details");
+    //     }
+    //     return result;
+    // }
 
     /**
      * Generates a report for the countries in a continent sorted from largest population to smallest.
@@ -707,153 +707,153 @@ import java.math.BigDecimal;
         return result;
     }
 
-    // /**
-    //  * Generates a report for the total population of the world
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> totalPopulationWorld(Connection connection){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {};
-    //         ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
+    /**
+     * Generates a report for the total population of the world
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationWorld(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 
-    // /**
-    //  * Generates a report for the total population of a continent
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> totalPopulationContinent(Connection connection, String continent){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {"#Continent", continent};
-    //         ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
+    /**
+     * Generates a report for the total population of a continent
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationContinent(Connection connection, String continent){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 
-    // /**
-    //  * Generates a report for the total population of a region
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> totalPopulationRegion(Connection connection, String region){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {"#Region", region};
-    //         ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
-// 
-    // /**
-    //  * Generates a report for the total population of a country
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> totalPopulationCountry(Connection connection, String country){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {"#Name", country};
-    //         ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
-// 
-    // /**
-    //  * Generates a report for the total population of a district
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> totalPopulationDistrict(Connection connection, String district){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {"#District", district};
-    //         ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
-// 
-    // /**
-    //  * Generates a report for the total population of a city
-    //  * @param connection the connection to the database
-    //  * @return
-    //  */
-    // public static ArrayList<Population> totalPopulationCity(Connection connection, String city){
-    //     ArrayList<Population> result = new ArrayList<Population>();
-    //     try {
-    //         String[] params = {"#Name", city};
-    //         ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
-    //         while (resultSet.next()) {
-    //             Population pop = new Population();
-    //             BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
-    //             pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
-    //             result.add(pop);
-    //         }
-    //         resultSet.close();
-    //     }
-    //     catch(Exception e) {
-    //         System.out.println(e.getMessage());
-    //         System.out.println("Failed to get population details");
-    //     }
-    //     return result;
-    // }
+    /**
+     * Generates a report for the total population of a region
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationRegion(Connection connection, String region){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a country
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationCountry(Connection connection, String country){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Name", country};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a district
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationDistrict(Connection connection, String district){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#District", district};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a city
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationCity(Connection connection, String city){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Name", city};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                BigDecimal decTotalPop = resultSet.getBigDecimal("totalPopulation");
+                pop.totalPopulation = (decTotalPop == null ? null : decTotalPop.toBigInteger());
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 }
