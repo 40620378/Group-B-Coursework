@@ -380,7 +380,7 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("Language")).thenReturn("Chinese");
         Mockito.when(result.getInt("noOfSpeakers")).thenReturn(1191843539);
-        Mockito.when(result.getFloat("percentWorldPop")).thenReturn(60.55);
+        Mockito.when(result.getDouble("percentWorldPop")).thenReturn(60.55);
         ArrayList<Language> resultList = ReportUtil.languagePercentage(con);
         assertEquals(1, resultList.size());
         String expected = "Language: Chinese noOfSpeakers: 1191843539 percentWorldPop: 60.55%";
