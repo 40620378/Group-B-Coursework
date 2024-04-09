@@ -22,7 +22,7 @@ public class ReportUtil {
             while (resultSet.next()) {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
-                pop.totalCity = resultSet.getInt("totalCity");
+                pop.totalCity = resultSet.getLong("totalCity");
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 pop.totalNotCity = resultSet.getLong("totalNotCity");
                 pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
@@ -46,7 +46,7 @@ public class ReportUtil {
             while (resultSet.next()) {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
-                pop.totalCity = resultSet.getInt("totalCity");
+                pop.totalCity = resultSet.getLong("totalCity");
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 pop.totalNotCity = resultSet.getLong("totalNotCity");
                 pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
