@@ -2,6 +2,7 @@ package com.napier.sem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.math.BigInteger;
 import java.math.BigDecimal;
 
 /**
@@ -21,9 +22,67 @@ public class ReportUtil {
             while (resultSet.next()) {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
-                pop.totalCity = resultSet.getInt("totalCity");
-                pop.totalPopulation = resultSet.getInt("totalPopulation");
-                pop.totalNotCity = resultSet.getInt("totalNotCity");
+                pop.totalCity = resultSet.getLong("totalCity");
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                pop.totalNotCity = resultSet.getLong("totalNotCity");
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a continent.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> peopleDistributionContinent(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Continent", "#Continent"};
+            ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = resultSet.getString("reportName");
+                pop.totalCity = resultSet.getLong("totalCity");
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                pop.totalNotCity = resultSet.getLong("totalNotCity");
+                pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
+                pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the overall population as well as those that live in a city and don't within a region.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> peopleDistributionRegion(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Region", "#Region"};
+            ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = resultSet.getString("reportName");
+                pop.totalCity = resultSet.getLong("totalCity");
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                pop.totalNotCity = resultSet.getLong("totalNotCity");
                 pop.percentageCity = roundedPercentage(pop.totalCity, pop.totalPopulation);
                 pop.percentageNotCity = roundedPercentage(pop.totalNotCity, pop.totalPopulation);
                 result.add(pop);
@@ -43,11 +102,11 @@ public class ReportUtil {
      * @param continent the specified continent
      * @return
      */
-    public static ArrayList<Country> continentByPopulation(Connection connection, String continent){
+    public static ArrayList<Country> countryContinentByPopulation(Connection connection, String continent){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
-            String[] params = {continent};
-            ResultSet resultSet = SQLUtil.run(connection, "continentByPopulation.sql", params);
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "countryByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -72,11 +131,11 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Country> worldByPopulation(Connection connection){
+    public static ArrayList<Country> countryWorldByPopulation(Connection connection){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
             String[] params = {};
-            ResultSet resultSet = SQLUtil.run(connection, "worldByPopulation.sql", params);
+            ResultSet resultSet = SQLUtil.run(connection, "countryWorldByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -95,17 +154,107 @@ public class ReportUtil {
         }
         return result;
     }
+
     /**
      * Generates a report for the countries in a region sorted from largest population to smallest.
      * @param connection the connection to the database
      * @param region the specified region
      * @return
      */
-    public static ArrayList<Country> regionByPopulation(Connection connection, String region){
+    public static ArrayList<Country> countryRegionByPopulation(Connection connection, String region){
         ArrayList<Country> result = new ArrayList<Country>();
         try {
-            String[] params = {region};
-            ResultSet resultSet = SQLUtil.run(connection, "regionByPopulation.sql", params);
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "countryByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated countries in the world where N is provided by the user.
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Country> nCountryWorldByPopulation(Connection connection, String N){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCountryWorldByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated countries in a continent where N is provided by the user.
+     * @param connection the connection to the database
+     * @param continent the specified continent
+     * @return
+     */
+    public static ArrayList<Country> nCountryContinentByPopulation(Connection connection, String continent, String N){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {"#Continent", continent, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCountryByPopulation.sql", params);
+            while (resultSet.next()) {
+                Country country = new Country();
+                country.code = resultSet.getString("Code");
+                country.name = resultSet.getString("Name");
+                country.continent = resultSet.getString("Continent");
+                country.population = resultSet.getString("Population");
+                country.region = resultSet.getString("Region");
+                country.capital = resultSet.getString("Capital");
+                result.add(country);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the N populated countries in a region where N is provided by the user.
+     * @param connection the connection to the database
+     * @param region the specified region
+     * @return
+     */
+    public static ArrayList<Country> nCountryRegionByPopulation(Connection connection, String region, String N){
+        ArrayList<Country> result = new ArrayList<Country>();
+        try {
+            String[] params = {"#Region", region, N};
+            ResultSet resultSet = SQLUtil.run(connection, "nCountryByPopulation.sql", params);
             while (resultSet.next()) {
                 Country country = new Country();
                 country.code = resultSet.getString("Code");
@@ -560,6 +709,7 @@ public class ReportUtil {
         }
         return result;
     }
+
     /**
      * Generates a report for the nuber of people who speak a language
      * @param connection the connection to the database
@@ -576,6 +726,160 @@ public class ReportUtil {
                 lan.noOfSpeakers = resultSet.getInt("noOfSpeakers");
                 lan.percentWorldPop = resultSet.getDouble("percentWorldPop");
                 result.add(lan);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+
+    private static float roundedPercentage(float value, long total){
+        float result = ((float)value) / total * 100;
+        result = ((float)Math.round(result * 100)) / 100;
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of the world
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationWorld(Connection connection){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = "World";
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a continent
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationContinent(Connection connection, String continent){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Continent", continent};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = continent;
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a region
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationRegion(Connection connection, String region){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Region", region};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = region;
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a country
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationCountry(Connection connection, String country){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Name", country};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = country;
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a district
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationDistrict(Connection connection, String district){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#District", district};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = district;
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(pop);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
+
+    /**
+     * Generates a report for the total population of a city
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Population> totalPopulationCity(Connection connection, String city){
+        ArrayList<Population> result = new ArrayList<Population>();
+        try {
+            String[] params = {"#Name", city};
+            ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
+            while (resultSet.next()) {
+                Population pop = new Population();
+                pop.reportName = city;
+                pop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(pop);
             }
             resultSet.close();
         }
