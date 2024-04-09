@@ -39,7 +39,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * Generates a report for the overall population as well as those that live in a city and don't within a continent.
      * @param connection the connection to the database
      * @return
      */
@@ -68,7 +68,7 @@ public class ReportUtil {
     }
 
     /**
-     * Generates a report for the overall population as well as those that live in a city and don't within a country.
+     * Generates a report for the overall population as well as those that live in a city and don't within a region.
      * @param connection the connection to the database
      * @return
      */

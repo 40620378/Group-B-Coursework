@@ -51,6 +51,26 @@ public class ReportUtilTest
     }
 
     @Test
+    void peopleDistributionRegion() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("British Islands");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(63398500L);
+        Mockito.when(result.getLong("totalCity")).thenReturn(23045714L);
+        Mockito.when(result.getLong("totalNotCity")).thenReturn(40352786L);
+        Mockito.when(result.getFloat("percentageCity")).thenReturn((float)36.35);
+        Mockito.when(result.getFloat("percentageNotCity")).thenReturn((float)63.65);
+        ArrayList<Population> resultList = ReportUtil.peopleDistributionRegion(con);
+        assertEquals(1, resultList.size());
+        String expected = "Name: British Islands Population: 63398500 City: 23045714(36.35%) Not City: 40352786(63.65%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
     void countryContinentByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
         ResultSet result = mock(ResultSet.class);
