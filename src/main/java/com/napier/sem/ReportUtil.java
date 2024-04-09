@@ -747,7 +747,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
-                pop.reportName = "Continent";
+                pop.reportName = continent;
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
@@ -772,6 +772,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
+                pop.reportName = region;
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
