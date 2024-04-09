@@ -19,12 +19,54 @@ public class ReportUtilTest
         Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("Aruba");
-        Mockito.when(result.getInt("totalCity")).thenReturn(29034);
-        Mockito.when(result.getInt("totalPopulation")).thenReturn(103000);
-        Mockito.when(result.getInt("totalNotCity")).thenReturn(73966);
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(103000L);
+        Mockito.when(result.getLong("totalCity")).thenReturn(29034L);
+        Mockito.when(result.getLong("totalNotCity")).thenReturn(73966L);
+        Mockito.when(result.getFloat("percentageCity")).thenReturn((float)28.19);
+        Mockito.when(result.getFloat("percentageNotCity")).thenReturn((float)71.81);
         ArrayList<Population> resultList = ReportUtil.peopleDistributionCountry(con);
         assertEquals(1, resultList.size());
         String expected = "Name: Aruba Population: 103000 City: 29034(28.19%) Not City: 73966(71.81%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void peopleDistributionContinent() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("North America");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(482993000L);
+        Mockito.when(result.getLong("totalCity")).thenReturn(168250381L);
+        Mockito.when(result.getLong("totalNotCity")).thenReturn(314742619L);
+        Mockito.when(result.getFloat("percentageCity")).thenReturn((float)34.83);
+        Mockito.when(result.getFloat("percentageNotCity")).thenReturn((float)65.17);
+        ArrayList<Population> resultList = ReportUtil.peopleDistributionContinent(con);
+        assertEquals(1, resultList.size());
+        String expected = "Name: North America Population: 482993000 City: 168250381(34.83%) Not City: 314742619(65.17%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void peopleDistributionRegion() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("British Islands");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(63398500L);
+        Mockito.when(result.getLong("totalCity")).thenReturn(23045714L);
+        Mockito.when(result.getLong("totalNotCity")).thenReturn(40352786L);
+        Mockito.when(result.getFloat("percentageCity")).thenReturn((float)36.35);
+        Mockito.when(result.getFloat("percentageNotCity")).thenReturn((float)63.65);
+        ArrayList<Population> resultList = ReportUtil.peopleDistributionRegion(con);
+        assertEquals(1, resultList.size());
+        String expected = "Name: British Islands Population: 63398500 City: 23045714(36.35%) Not City: 40352786(63.65%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -427,6 +469,102 @@ public class ReportUtilTest
         ArrayList<City> resultList = ReportUtil.nCitiesDistrictByPopulation(con, "param", "7");
         assertEquals(1, resultList.size());
         String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationWorld() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("World");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(6078749450L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationWorld(con);
+        assertEquals(1, resultList.size());
+        String expected = "Name: World Population: 6078749450 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationContinent() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Europe");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(730074600L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationContinent(con, "Europe");
+        assertEquals(1, resultList.size());
+        String expected = "Name: Europe Population: 730074600 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationRegion() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Caribbean");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(38140000L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationRegion(con, "Caribbean");
+        assertEquals(1, resultList.size());
+        String expected = "Name: Caribbean Population: 38140000 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationCountry() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("United Kingdom");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(59623400L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationCountry(con, "United Kingdom");
+        assertEquals(1, resultList.size());
+        String expected = "Name: United Kingdom Population: 59623400 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationDistrict() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Scotland");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(1429620L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationDistrict(con, "Scotland");
+        assertEquals(1, resultList.size());
+        String expected = "Name: Scotland Population: 1429620 City: 0(0.0%) Not City: 0(0.0%)";
+        assertEquals(expected, resultList.get(0).ToString());
+    }
+
+    @Test
+    void totalPopulationCity() throws SQLException {
+        Connection con = mock(Connection.class);
+        ResultSet result = mock(ResultSet.class);
+        Statement stmt = mock(Statement.class);
+        Mockito.when(con.createStatement()).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery(anyString())).thenReturn(result);
+        Mockito.when(result.next()).thenReturn(true).thenReturn(false);
+        Mockito.when(result.getString("reportName")).thenReturn("Edinburgh");
+        Mockito.when(result.getLong("totalPopulation")).thenReturn(450180L);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationCity(con, "Edinburgh");
+        assertEquals(1, resultList.size());
+        String expected = "Name: Edinburgh Population: 450180 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 }
