@@ -46,7 +46,7 @@ public class ReportUtil {
     public static ArrayList<Population> peopleDistributionContinent(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
         try {
-            String[] params = {};
+            String[] params = {"#Continent", "#Continent"};
             ResultSet resultSet = SQLUtil.run(connection, "peopleDistribution.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
