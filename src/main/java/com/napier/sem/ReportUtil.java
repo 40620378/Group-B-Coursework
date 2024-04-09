@@ -797,6 +797,7 @@ public class ReportUtil {
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
                 Population pop = new Population();
+                pop.reportName = country;
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(pop);
             }
