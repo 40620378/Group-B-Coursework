@@ -909,7 +909,7 @@ public class ReportUtil {
             for(int i = 0; i < result.size(); i++){
                 System.out.println("Result loop");
                 System.out.println(result.get(i).getClass().getSimpleName());
-                if(result.get(i).getClass().getSimpleName() == "City"){
+                if(result.get(i).getClass().getSimpleName().equals("City")){
                     System.out.println("inside conditional");
                     City city = (City) result.get(i);
                     System.out.println(city.ToString());
