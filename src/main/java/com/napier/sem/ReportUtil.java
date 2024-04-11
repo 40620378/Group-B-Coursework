@@ -898,16 +898,20 @@ public class ReportUtil {
             Field[] fields = result.get(0).getClass().getFields();
             ArrayList<String> fieldNames = new ArrayList<String>();
             String secondLine = "|";
+            String className = result.get(0).getClass().getSimpleName();
             for(int i = 0; i < fields.length; i++){
                 fieldNames.add(fields[i].getName());
                 secondLine = secondLine + " --- |";
+            }
+            if(className.equals("CapitalCity")){
+                fieldNames.remove("District");
             }
             String heading = String.join(" | ", fieldNames);
             secondLine = secondLine + "\r\n";
             sb.append("| " + heading + " |\r\n");
             sb.append(secondLine);
             for(int i = 0; i < result.size(); i++){
-                switch(result.get(i).getClass().getSimpleName()){
+                switch(className) {
                     case "City":
                         City city = (City) result.get(i);
                         sb.append(city.ToRow());
@@ -929,28 +933,6 @@ public class ReportUtil {
                         sb.append(pop.ToRow());
                         break;
                 }
-                /*
-                if(result.get(i).getClass().getSimpleName().equals("City")){
-                    City city = (City) result.get(i);
-                    sb.append(city.ToRow());
-                }
-                else if(result.get(i).getClass().getSimpleName().equals("CapitalCity")){
-                    CapitalCity city = (CapitalCity) result.get(i);
-                    sb.append(city.ToRow());
-                }
-                else if(result.get(i).getClass().getSimpleName().equals("Country")){
-                    Country country = (Country) result.get(i);
-                    sb.append(country.ToRow());
-                }
-                else if(result.get(i).getClass().getSimpleName().equals("Language")){
-                    Language lang = (Language) result.get(i);
-                    sb.append(lang.ToRow());
-                }
-                else if(result.get(i).getClass().getSimpleName().equals("Population")){
-                    Population pop = (Population) result.get(i);
-                    sb.append(pop.ToRow());
-                }
-                */
             }
             try {
                 new File("./reports/").mkdir();
