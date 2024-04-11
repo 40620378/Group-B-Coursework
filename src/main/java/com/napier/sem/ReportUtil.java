@@ -906,9 +906,11 @@ public class ReportUtil {
             secondLine = secondLine + "\r\n";
             sb.append("| " + heading + " |\r\n");
             sb.append(secondLine);
+            System.out.println("Result size: " + result.size());
             for(int i = 0; i < result.size(); i++){
                 if(result.get(i).getClass().getSimpleName() == "City"){
                     City city = (City) (Object) result.get(i);
+                    System.out.println(city.ToString());
                     sb.append(city.ToRow());
                 }
             }

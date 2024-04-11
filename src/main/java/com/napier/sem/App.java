@@ -22,6 +22,7 @@ public class App
         ArrayList<City> result = ReportUtil.citiesContinentByPopulation(connection, "Europe");
         ArrayList<Object> resultObject = new ArrayList<Object>();
         for(int i = 0; i < result.size(); i++) {
+            System.out.println("Result Loop");
             resultObject.add(result.get(i));
         }
         ReportUtil.generateMarkdown(resultObject, "citiesEuropeByPopulation");
