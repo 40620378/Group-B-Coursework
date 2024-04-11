@@ -907,14 +907,45 @@ public class ReportUtil {
             sb.append("| " + heading + " |\r\n");
             sb.append(secondLine);
             for(int i = 0; i < result.size(); i++){
-                System.out.println("Result loop");
-                System.out.println(result.get(i).getClass().getSimpleName());
+                switch(result.get(i).getClass().getSimpleName()){
+                    case "City":
+                        City city = (City) result.get(i);
+                        sb.append(city.ToRow());
+                    case "CapitalCity":
+                        CapitalCity capCity = (CapitalCity) result.get(i);
+                        sb.append(capCity.ToRow());
+                    case "Country":
+                        Country country = (Country) result.get(i);
+                        sb.append(country.ToRow());
+                    case "Language":
+                        Language lang = (Language) result.get(i);
+                        sb.append(lang.ToRow());
+                    case "Population":
+                        Population pop = (Population) result.get(i);
+                        sb.append(pop.ToRow());
+                }
+                /*
                 if(result.get(i).getClass().getSimpleName().equals("City")){
-                    System.out.println("inside conditional");
                     City city = (City) result.get(i);
-                    System.out.println(city.ToString());
                     sb.append(city.ToRow());
                 }
+                else if(result.get(i).getClass().getSimpleName().equals("CapitalCity")){
+                    CapitalCity city = (CapitalCity) result.get(i);
+                    sb.append(city.ToRow());
+                }
+                else if(result.get(i).getClass().getSimpleName().equals("Country")){
+                    Country country = (Country) result.get(i);
+                    sb.append(country.ToRow());
+                }
+                else if(result.get(i).getClass().getSimpleName().equals("Language")){
+                    Language lang = (Language) result.get(i);
+                    sb.append(lang.ToRow());
+                }
+                else if(result.get(i).getClass().getSimpleName().equals("Population")){
+                    Population pop = (Population) result.get(i);
+                    sb.append(pop.ToRow());
+                }
+                */
             }
             try {
                 new File("./reports/").mkdir();
