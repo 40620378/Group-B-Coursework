@@ -900,13 +900,13 @@ public class ReportUtil {
             String secondLine = "|";
             String className = result.get(0).getClass().getSimpleName();
             for(int i = 0; i < fields.length; i++){
-                String fieldName = fields[i].getName();
-                if(!className.equals("CapitalCity") && !fields[i].getName().equals("district")){
-                    fieldNames.add(fieldName);
-                    secondLine = secondLine + " --- |";
-                }
+                fieldNames.add(fields[i].getName());
+                secondLine = secondLine + " --- |";
             }
-
+            if(className.equals("CapitalCity")){
+                fieldNames.remove("district");
+                secondLine.replaceFirst(" --- \\|", "");
+            }
             String heading = String.join(" | ", fieldNames);
             secondLine = secondLine + "\r\n";
             sb.append("| " + heading + " |\r\n");
