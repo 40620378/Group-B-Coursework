@@ -936,7 +936,7 @@ public class ReportUtil {
             }
             try {
                 new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + methodName)));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + methodName + ".md")));
                 writer.write(sb.toString());
                 writer.close();
             }
