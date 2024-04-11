@@ -899,16 +899,16 @@ public class ReportUtil {
             ArrayList<String> fieldNames = new ArrayList<String>();
             String secondLine = "|";
             String className = result.get(0).getClass().getSimpleName();
-            for(int i = 0; i < fields.length; i++){
+            for(int i = 0; i < fields.length; i++) {
                 fieldNames.add(fields[i].getName());
                 secondLine = secondLine + " --- |";
             }
-            String heading = String.join(" | ", fieldNames);
             secondLine = secondLine + "\r\n";
             if(className.equals("CapitalCity")){
                 fieldNames.remove("district");
                 secondLine = "| --- | --- | --- |\r\n";
             }
+            String heading = String.join(" | ", fieldNames);
             sb.append("| " + heading + " |\r\n");
             sb.append(secondLine);
             for(int i = 0; i < result.size(); i++){
