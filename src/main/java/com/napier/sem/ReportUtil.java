@@ -903,12 +903,12 @@ public class ReportUtil {
                 fieldNames.add(fields[i].getName());
                 secondLine = secondLine + " --- |";
             }
-            if(className.equals("CapitalCity")){
-                fieldNames.remove("district");
-                secondLine.replaceFirst(" --- \\|", "");
-            }
             String heading = String.join(" | ", fieldNames);
             secondLine = secondLine + "\r\n";
+            if(className.equals("CapitalCity")){
+                fieldNames.remove("district");
+                secondLine = "| --- | --- | --- |\r\n";
+            }
             sb.append("| " + heading + " |\r\n");
             sb.append(secondLine);
             for(int i = 0; i < result.size(); i++){
