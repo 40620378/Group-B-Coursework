@@ -19,10 +19,10 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        ArrayList<Population> result = ReportUtil.totalPopulationCity(connection, "Edinburgh");
+        ArrayList<Language> result = ReportUtil.languagePercentage(connection);
          if(result.size() > 0){
             for (int i = 0; i < result.size(); i++){
-                Population Result = result.get(i);
+                Language Result = result.get(i);
                 System.out.println((i+1) +". " + Result.ToString());
             }
         }

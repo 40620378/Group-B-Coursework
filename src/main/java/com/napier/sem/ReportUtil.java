@@ -859,4 +859,30 @@ public class ReportUtil {
         }
         return result;
     }
+
+    /**
+     * Generates a report for the nuber of people who speak a language
+     * @param connection the connection to the database
+     * @return
+     */
+    public static ArrayList<Language> languagePercentage(Connection connection){
+        ArrayList<Language> result = new ArrayList<Language>();
+        try {
+            String[] params = {};
+            ResultSet resultSet = SQLUtil.run(connection, "languagePercentage.sql", params);
+            while (resultSet.next()) {
+                Language lan = new Language();
+                lan.Language = resultSet.getString("Language");
+                lan.noOfSpeakers = resultSet.getInt("noOfSpeakers");
+                lan.percentWorldPop = resultSet.getDouble("percentWorldPop");
+                result.add(lan);
+            }
+            resultSet.close();
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+        return result;
+    }
 }
