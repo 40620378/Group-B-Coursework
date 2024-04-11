@@ -904,7 +904,7 @@ public class ReportUtil {
                 secondLine = secondLine + " --- |";
             }
             if(className.equals("CapitalCity")){
-                fieldNames.remove("District");
+                fieldNames.remove("district");
             }
             String heading = String.join(" | ", fieldNames);
             secondLine = secondLine + "\r\n";
