@@ -9,4 +9,9 @@ public class CapitalCity extends City{
         String result = "City: " + name + " Country: " + country  + " Population: " + population;
         return result;
     }
+
+    public String ToRow(){
+        String result = "| " + name + " | " + country  + " | " + population + " |\r\n";
+        return result;
+    }
 }

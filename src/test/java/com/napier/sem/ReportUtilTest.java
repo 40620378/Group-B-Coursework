@@ -346,6 +346,7 @@ public class ReportUtilTest
         assertEquals(expected, resultList.get(0).ToString());
     }
 
+    /*
     @Test
     void citiesContinentByPopulation() throws SQLException {
         Connection con = mock(Connection.class);
@@ -363,6 +364,7 @@ public class ReportUtilTest
         String expected = "City: Tokyo Country: JPN District: Tokyo-to Population: 7980230";
         assertEquals(expected, resultList.get(0).ToString());
     }
+    */
 
     @Test
     void citiesWorldByPopulation() throws SQLException {

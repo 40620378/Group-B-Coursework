@@ -1,9 +1,13 @@
 package com.napier.sem;
+import java.io.*;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.math.BigInteger;
 import java.math.BigDecimal;
+import java.util.Optional;
+import java.util.Stack;
 
 /**
  * Contains methods to generate reports based on queries located in the resources directory.
@@ -884,5 +888,40 @@ public class ReportUtil {
             System.out.println("Failed to get population details");
         }
         return result;
+    }
+    public static void generateMarkdown(ArrayList<Object> result, String methodName){
+        if (result == null) {
+            System.out.println("No result for: " + methodName);
+        }
+        else{
+            StringBuilder sb = new StringBuilder();
+            Field[] fields = result.get(0).getClass().getFields();
+            ArrayList<String> fieldNames = new ArrayList<String>();
+            String secondLine = "|";
+            for(int i = 0; i < fields.length; i++){
+                fieldNames.add(fields[i].getName());
+                secondLine = secondLine + " --- |";
+            }
+            String heading = String.join(" | ", fieldNames);
+            secondLine = secondLine + "\r\n";
+            sb.append("| " + heading + " |\r\n");
+            sb.append(secondLine);
+            for(int i = 0; i < result.size(); i++){
+                if(result.get(i).getClass().getSimpleName() == "City"){
+                    City city = (City) (Object) result.get(i);
+                    sb.append(city.ToRow());
+                }
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + methodName)));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
