@@ -911,18 +911,23 @@ public class ReportUtil {
                     case "City":
                         City city = (City) result.get(i);
                         sb.append(city.ToRow());
+                        break;
                     case "CapitalCity":
                         CapitalCity capCity = (CapitalCity) result.get(i);
                         sb.append(capCity.ToRow());
+                        break;
                     case "Country":
                         Country country = (Country) result.get(i);
                         sb.append(country.ToRow());
+                        break;
                     case "Language":
                         Language lang = (Language) result.get(i);
                         sb.append(lang.ToRow());
+                        break;
                     case "Population":
                         Population pop = (Population) result.get(i);
                         sb.append(pop.ToRow());
+                        break;
                 }
                 /*
                 if(result.get(i).getClass().getSimpleName().equals("City")){
