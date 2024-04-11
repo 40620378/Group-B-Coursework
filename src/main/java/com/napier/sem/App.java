@@ -20,12 +20,18 @@ public class App
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
         Connection connection = connectionManager.connect();
-        ArrayList<City> result = ReportUtil.citiesContinentByPopulation(connection, "Europe");
+        ArrayList<City> citiesEuropeByPopulation = ReportUtil.citiesContinentByPopulation(connection, "Europe");
+        callGenerateMarkdown(citiesEuropeByPopulation, "citiesEuropeByPopulation");
+        ArrayList<CapitalCity> capitalWorldByPopulation = ReportUtil.capitalWorldByPopulation(connection);
+        callGenerateMarkdown(capitalWorldByPopulation, "capitalWorldByPopulation");
+        connectionManager.disconnect();
+    }
+
+    private static void callGenerateMarkdown(ArrayList<?> result, String name) {
         ArrayList<Object> resultObject = new ArrayList<Object>();
         for(int i = 0; i < result.size(); i++) {
             resultObject.add(result.get(i));
         }
-        ReportUtil.generateMarkdown(resultObject, "citiesEuropeByPopulation");
-        connectionManager.disconnect();
+        ReportUtil.generateMarkdown(resultObject, name);
     }
 }
