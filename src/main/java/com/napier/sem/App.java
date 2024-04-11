@@ -28,12 +28,12 @@ public class App
         callGenerateMarkdown(countryBritishIslandsByPopulation, "countryBritishIslandsByPopulation");
 
         System.out.println("Top N Countries By Population");
-        ArrayList<Country> nCountryWorldByPopulation = ReportUtil.nCountryWorldByPopulation(connection, "13");
-        callGenerateMarkdown(nCountryWorldByPopulation, "nCountryWorldByPopulation");
+        ArrayList<Country> Country13WorldByPopulation = ReportUtil.nCountryWorldByPopulation(connection, "13");
+        callGenerateMarkdown(Country13WorldByPopulation, "Country13WorldByPopulation");
         ArrayList<Country> country16EuropeByPopulation = ReportUtil.nCountryContinentByPopulation(connection, "Europe", "16");
         callGenerateMarkdown(country16EuropeByPopulation, "country16EuropeByPopulation");
-        ArrayList<Country> Country3BritishIslandsByPopulation = ReportUtil.nCountryRegionByPopulation(connection, "British Islands", "3");
-        callGenerateMarkdown(Country3BritishIslandsByPopulation, "Country3BritishIslandsByPopulation");
+        ArrayList<Country> Country1BritishIslandsByPopulation = ReportUtil.nCountryRegionByPopulation(connection, "British Islands", "1");
+        callGenerateMarkdown(Country1BritishIslandsByPopulation, "Country1BritishIslandsByPopulation");
 
         System.out.println("Top Cities By Population");
         ArrayList<City> citiesWorldByPopulation = ReportUtil.citiesWorldByPopulation(connection);
@@ -72,8 +72,8 @@ public class App
         callGenerateMarkdown(capital13WorldByPopulation, "capital13WorldByPopulation");
         ArrayList<CapitalCity> capital19EuropeByPopulation = ReportUtil.nCapitalContinentByPopulation(connection, "Europe", "19");
         callGenerateMarkdown(capital19EuropeByPopulation, "capital19EuropeByPopulation");
-        ArrayList<CapitalCity> capital4BritishIslandsByPopulation = ReportUtil.nCapitalRegionByPopulation(connection, "British Islands", "4");
-        callGenerateMarkdown(capital4BritishIslandsByPopulation, "capital4BritishIslandsByPopulation");
+        ArrayList<CapitalCity> capital1BritishIslandsByPopulation = ReportUtil.nCapitalRegionByPopulation(connection, "British Islands", "1");
+        callGenerateMarkdown(capital1BritishIslandsByPopulation, "capital1BritishIslandsByPopulation");
 
         System.out.println("People Distribution");
         ArrayList<Population> peopleDistributionContinent = ReportUtil.peopleDistributionContinent(connection);

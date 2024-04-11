@@ -21,7 +21,7 @@ public class Population {
     }
 
     public String ToRow(){
-        String result = "| " + reportName + " | " + totalPopulation + " | " + totalCity + "(" + percentageCity + "%) | " + totalNotCity + "(" + percentageNotCity + "%) |\r\n";
+        String result = "| " + reportName + " | " + totalPopulation + " | " + totalCity + " | " + totalNotCity + " | " + percentageCity + "% | "  + percentageNotCity + "% |\r\n";
         return result;
     }
 }

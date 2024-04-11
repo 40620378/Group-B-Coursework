@@ -907,6 +907,11 @@ public class ReportUtil {
             if(className.equals("CapitalCity")){
                 fieldNames.remove("district");
                 secondLine = "| --- | --- | --- |\r\n";
+            }elseif(methodName.contains("total")){
+                fieldNames.remove("totalCity");
+                fieldNames.remove("totalNotCity");
+                fieldNames.remove("percentageCity");
+                fieldNames.remove("percentageNotCity");
             }
             String heading = String.join(" | ", fieldNames);
             sb.append("| " + heading + " |\r\n");
