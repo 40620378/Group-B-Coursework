@@ -909,7 +909,7 @@ public class ReportUtil {
                 secondLine = "| --- | --- | --- |\r\n";
             }
             
-            boolean totalMethod = methodName.contains("total")
+            boolean totalMethod = methodName.contains("total");
             if(totalMethod == true){
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
