@@ -72,3 +72,4 @@
 | Victoria | Seychelles | Mahé | 41000 |
 | Moroni | Comoros | Njazidja | 36000 |
 | Mamoutzou | Mayotte | Mamoutzou | 12000 |
+AHHHHHHHHHHHHHHHHHHHHHH
