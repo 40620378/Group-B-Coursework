@@ -1,3 +1,3 @@
-| reportName | totalPopulation | totalCity | totalNotCity | percentageCity | percentageNotCity |
-| --- | --- | --- | --- | --- | --- |
+| reportName | totalPopulation |
+| --- | --- |
 | Edinburgh | 450180 | 0 | 0 | 0.0% | 0.0% |
