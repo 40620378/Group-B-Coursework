@@ -909,13 +909,13 @@ public class ReportUtil {
                 secondLine = "| --- | --- | --- |\r\n";
             }
             
+            boolean totalMethod = methodName.contains("total");
             if(methodName.contains("total")){
-                System.out.print("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
                 fieldNames.remove("percentageNotCity");
-                secondLine = "| --- | --- | --- |\r\n";
+                secondLine = "| --- | --- |\r\n";
             }
 
             String heading = String.join(" | ", fieldNames);
