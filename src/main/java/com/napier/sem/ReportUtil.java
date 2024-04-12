@@ -719,16 +719,16 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationWorld(Connection connection){
-        ArrayList<Population> result = new ArrayList<Population>();
+    public static ArrayList<TotalPopulation> totalPopulationWorld(Connection connection){
+        ArrayList<TotalPopulation> result = new ArrayList<TotalPopulation>();
         try {
             String[] params = {};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
             while (resultSet.next()) {
-                Population pop = new Population();
-                pop.reportName = "World";
-                pop.totalPopulation = resultSet.getLong("totalPopulation");
-                result.add(pop);
+                TotalPopulation totpop = new Population();
+                totpop.reportName = "World";
+                totpop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(totpop);
             }
             resultSet.close();
         }
@@ -744,16 +744,16 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationContinent(Connection connection, String continent){
-        ArrayList<Population> result = new ArrayList<Population>();
+    public static ArrayList<TotalPopulation> totalPopulationContinent(Connection connection, String continent){
+        ArrayList<TotalPopulation> result = new ArrayList<TotalPopulation>();
         try {
             String[] params = {"#Continent", continent};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
-                Population pop = new Population();
-                pop.reportName = continent;
-                pop.totalPopulation = resultSet.getLong("totalPopulation");
-                result.add(pop);
+                TotalPopulation totpop = new TotalPopulation();
+                totpop.reportName = continent;
+                totpop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(totpop);
             }
             resultSet.close();
         }
@@ -769,16 +769,16 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationRegion(Connection connection, String region){
-        ArrayList<Population> result = new ArrayList<Population>();
+    public static ArrayList<TotalPopulation> totalPopulationRegion(Connection connection, String region){
+        ArrayList<TotalPopulation> result = new ArrayList<TotalPopulation>();
         try {
             String[] params = {"#Region", region};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
-                Population pop = new Population();
-                pop.reportName = region;
-                pop.totalPopulation = resultSet.getLong("totalPopulation");
-                result.add(pop);
+                TotalPopulation totpop = new TotalPopulation();
+                totpop.reportName = region;
+                totpop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(totpop);
             }
             resultSet.close();
         }
@@ -794,16 +794,16 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationCountry(Connection connection, String country){
-        ArrayList<Population> result = new ArrayList<Population>();
+    public static ArrayList<TotalPopulation> totalPopulationCountry(Connection connection, String country){
+        ArrayList<TotalPopulation> result = new ArrayList<TotalPopulation>();
         try {
             String[] params = {"#Name", country};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationConRegCou.sql", params);
             while (resultSet.next()) {
-                Population pop = new Population();
-                pop.reportName = country;
-                pop.totalPopulation = resultSet.getLong("totalPopulation");
-                result.add(pop);
+                TotalPopulation totpop = new TotalPopulation();
+                totpop.reportName = country;
+                totpop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(totpop);
             }
             resultSet.close();
         }
@@ -819,16 +819,16 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationDistrict(Connection connection, String district){
-        ArrayList<Population> result = new ArrayList<Population>();
+    public static ArrayList<TotalPopulation> totalPopulationDistrict(Connection connection, String district){
+        ArrayList<TotalPopulation> result = new ArrayList<TotalPopulation>();
         try {
             String[] params = {"#District", district};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
             while (resultSet.next()) {
-                Population pop = new Population();
-                pop.reportName = district;
-                pop.totalPopulation = resultSet.getLong("totalPopulation");
-                result.add(pop);
+                TotalPopulation totpop = new TotalPopulation();
+                totpop.reportName = district;
+                totpop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(totpop);
             }
             resultSet.close();
         }
@@ -844,16 +844,16 @@ public class ReportUtil {
      * @param connection the connection to the database
      * @return
      */
-    public static ArrayList<Population> totalPopulationCity(Connection connection, String city){
-        ArrayList<Population> result = new ArrayList<Population>();
+    public static ArrayList<TotalPopulation> totalPopulationCity(Connection connection, String city){
+        ArrayList<TotalPopulation> result = new ArrayList<TotalPopulation>();
         try {
             String[] params = {"#Name", city};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationDisCit.sql", params);
             while (resultSet.next()) {
-                Population pop = new Population();
-                pop.reportName = city;
-                pop.totalPopulation = resultSet.getLong("totalPopulation");
-                result.add(pop);
+                TotalPopulation totpop = new TotalPopulation();
+                totpop.reportName = city;
+                totpop.totalPopulation = resultSet.getLong("totalPopulation");
+                result.add(totpop);
             }
             resultSet.close();
         }
@@ -942,6 +942,10 @@ public class ReportUtil {
                     case "Population":
                         Population pop = (Population) result.get(i);
                         sb.append(pop.ToRow());
+                        break;
+                    case "TotalPopulation":
+                        TotalPopulation totpop = (TotalPopulation) result.get(i);
+                        sb.append(totpop.ToRow());
                         break;
                 }
             }
