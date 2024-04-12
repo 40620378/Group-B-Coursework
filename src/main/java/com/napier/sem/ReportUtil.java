@@ -909,8 +909,8 @@ public class ReportUtil {
                 secondLine = "| --- | --- | --- |\r\n";
             }
             
-            if(methodName.contains("total")){
-                System.out.print("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            boolean totalMethod = methodName.contains("total")
+            if(totalMethod == true){
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
