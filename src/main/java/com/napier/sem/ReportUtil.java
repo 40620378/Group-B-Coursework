@@ -909,7 +909,7 @@ public class ReportUtil {
                 secondLine = "| --- | --- | --- |\r\n";
             }
             
-            boolean totalMethod = methodName.contains("total")
+            boolean totalMethod = methodName.contains("total");
             if(totalMethod == true){
                 System.out.print(methodName+ " contains: " + "\n");
                 fieldNames.remove("totalCity");
