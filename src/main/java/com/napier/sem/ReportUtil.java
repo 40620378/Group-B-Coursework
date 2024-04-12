@@ -910,14 +910,13 @@ public class ReportUtil {
                 secondLine = "| --- | --- | --- |\r\n";
             }
             
-            boolean totalMethod = methodName.contains("total");
-            if(methodName.contains("total")){
-                fieldNames.remove("totalCity");
-                // fieldNames.remove("totalNotCity");
-                // fieldNames.remove("percentageCity");
-                // fieldNames.remove("percentageNotCity");
-                secondLine = "| --- | --- | --- |\r\n";
-            }
+            // if(methodName.contains("total")){
+            //     fieldNames.remove("totalCity");
+            //     // fieldNames.remove("totalNotCity");
+            //     // fieldNames.remove("percentageCity");
+            //     // fieldNames.remove("percentageNotCity");
+            //     secondLine = "| --- | --- | --- |\r\n";
+            // }
 
             String heading = String.join(" | ", fieldNames);
             sb.append("| " + heading + " |\r\n");
