@@ -910,7 +910,7 @@ public class ReportUtil {
             }
             
             if(methodName.contains("total")){
-                System.out.print("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+                System.out.print("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
