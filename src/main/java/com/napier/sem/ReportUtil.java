@@ -911,7 +911,7 @@ public class ReportUtil {
             
             boolean totalMethod = methodName.contains("total");
             if(totalMethod == true){
-                System.out.print(methodName+ " contains: " + "\n");
+                System.out.print(methodName+ " contains: " + totalMethod + "\n");
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
