@@ -84,17 +84,17 @@ public class App
         callGenerateMarkdown(peopleDistributionCountry, "peopleDistributionCountry");
 
         System.out.println("Total Populations");
-        ArrayList<Population> totalPopulationWorld = ReportUtil.totalPopulationWorld(connection);
+        ArrayList<TotalPopulation> totalPopulationWorld = ReportUtil.totalPopulationWorld(connection);
         callGenerateMarkdown(totalPopulationWorld, "totalPopulationWorld");
-        ArrayList<Population> totalPopulationEurope = ReportUtil.totalPopulationContinent(connection, "Europe");
+        ArrayList<TotalPopulation> totalPopulationEurope = ReportUtil.totalPopulationContinent(connection, "Europe");
         callGenerateMarkdown(totalPopulationEurope, "totalPopulationEurope");
-        ArrayList<Population> totalPopulationBritishIslands = ReportUtil.totalPopulationRegion(connection, "British Islands");
+        ArrayList<TotalPopulation> totalPopulationBritishIslands = ReportUtil.totalPopulationRegion(connection, "British Islands");
         callGenerateMarkdown(totalPopulationBritishIslands, "totalPopulationBritishIslands");
-        ArrayList<Population> totalPopulationUnitedKingdom = ReportUtil.totalPopulationCountry(connection, "United Kingdom");
+        ArrayList<TotalPopulation> totalPopulationUnitedKingdom = ReportUtil.totalPopulationCountry(connection, "United Kingdom");
         callGenerateMarkdown(totalPopulationUnitedKingdom, "totalPopulationUnitedKingdom");
-        ArrayList<Population> totalPopulationScotland = ReportUtil.totalPopulationDistrict(connection, "Scotland");
+        ArrayList<TotalPopulation> totalPopulationScotland = ReportUtil.totalPopulationDistrict(connection, "Scotland");
         callGenerateMarkdown(totalPopulationScotland, "totalPopulationScotland");
-        ArrayList<Population> totalPopulationEdinburgh = ReportUtil.totalPopulationCity(connection, "Edinburgh");
+        ArrayList<TotalPopulation> totalPopulationEdinburgh = ReportUtil.totalPopulationCity(connection, "Edinburgh");
         callGenerateMarkdown(totalPopulationEdinburgh, "totalPopulationEdinburgh");
 
         System.out.println("Language Speakers");
