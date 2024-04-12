@@ -484,9 +484,9 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("World");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(6078749450L);
-        ArrayList<TotalPopulation> resultList = ReportUtil.totalPopulationWorld(con);
+        ArrayList<Population> resultList = ReportUtil.totalPopulationWorld(con);
         assertEquals(1, resultList.size());
-        String expected = "Name: World Population: 6078749450";
+        String expected = "Name: World Population: 6078749450 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -500,9 +500,9 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("Europe");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(730074600L);
-        ArrayList<TotalPopulation> resultList = ReportUtil.totalPopulationContinent(con, "Europe");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationContinent(con, "Europe");
         assertEquals(1, resultList.size());
-        String expected = "Name: Europe Population: 730074600";
+        String expected = "Name: Europe Population: 730074600 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -516,9 +516,9 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("Caribbean");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(38140000L);
-        ArrayList<TotalPopulation> resultList = ReportUtil.totalPopulationRegion(con, "Caribbean");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationRegion(con, "Caribbean");
         assertEquals(1, resultList.size());
-        String expected = "Name: Caribbean Population: 38140000";
+        String expected = "Name: Caribbean Population: 38140000 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -532,9 +532,9 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("United Kingdom");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(59623400L);
-        ArrayList<TotalPopulation> resultList = ReportUtil.totalPopulationCountry(con, "United Kingdom");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationCountry(con, "United Kingdom");
         assertEquals(1, resultList.size());
-        String expected = "Name: United Kingdom Population: 59623400";
+        String expected = "Name: United Kingdom Population: 59623400 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -548,9 +548,9 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("Scotland");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(1429620L);
-        ArrayList<TotalPopulation> resultList = ReportUtil.totalPopulationDistrict(con, "Scotland");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationDistrict(con, "Scotland");
         assertEquals(1, resultList.size());
-        String expected = "Name: Scotland Population: 1429620";
+        String expected = "Name: Scotland Population: 1429620 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
@@ -564,9 +564,9 @@ public class ReportUtilTest
         Mockito.when(result.next()).thenReturn(true).thenReturn(false);
         Mockito.when(result.getString("reportName")).thenReturn("Edinburgh");
         Mockito.when(result.getLong("totalPopulation")).thenReturn(450180L);
-        ArrayList<TotalPopulation> resultList = ReportUtil.totalPopulationCity(con, "Edinburgh");
+        ArrayList<Population> resultList = ReportUtil.totalPopulationCity(con, "Edinburgh");
         assertEquals(1, resultList.size());
-        String expected = "Name: Edinburgh Population: 450180";
+        String expected = "Name: Edinburgh Population: 450180 City: 0(0.0%) Not City: 0(0.0%)";
         assertEquals(expected, resultList.get(0).ToString());
     }
 

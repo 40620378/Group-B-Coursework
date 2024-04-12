@@ -725,7 +725,7 @@ public class ReportUtil {
             String[] params = {};
             ResultSet resultSet = SQLUtil.run(connection, "totalPopulationWorld.sql", params);
             while (resultSet.next()) {
-                TotalPopulation totpop = new TotalPopulation();
+                TotalPopulation totpop = new Population();
                 totpop.reportName = "World";
                 totpop.totalPopulation = resultSet.getLong("totalPopulation");
                 result.add(totpop);
@@ -910,11 +910,11 @@ public class ReportUtil {
             }
             
             boolean totalMethod = methodName.contains("total");
-            if(className.equals("TotalPopulation")){
+            if(methodName.contains("total")){
                 fieldNames.remove("totalCity");
-                fieldNames.remove("totalNotCity");
-                fieldNames.remove("percentageCity");
-                fieldNames.remove("percentageNotCity");
+                // fieldNames.remove("totalNotCity");
+                // fieldNames.remove("percentageCity");
+                // fieldNames.remove("percentageNotCity");
                 secondLine = "| --- | --- | --- |\r\n";
             }
 
@@ -952,7 +952,6 @@ public class ReportUtil {
             try {
                 new File("./reports/").mkdir();
                 BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + methodName + ".md")));
-                sb.append("AHHHHHHHHHHHHHHHHHHHHHH");
                 writer.write(sb.toString());
                 writer.close();
             }
