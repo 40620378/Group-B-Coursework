@@ -7,7 +7,7 @@ public class TotalPopulation extends Population{
      */
 
     public String ToString(){
-        String result = "Name: " + reportName + " totalPopulation: " + totalPopulation;
+        String result = "Name: " + reportName + " Population: " + totalPopulation;
         return result;
     }
 
