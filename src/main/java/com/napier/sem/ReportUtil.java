@@ -1,9 +1,14 @@
+
 package com.napier.sem;
+import java.io.*;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.math.BigInteger;
 import java.math.BigDecimal;
+import java.util.Optional;
+import java.util.Stack;
 
 /**
  * Contains methods to generate reports based on queries located in the resources directory.
@@ -884,5 +889,72 @@ public class ReportUtil {
             System.out.println("Failed to get population details");
         }
         return result;
+    }
+    public static void generateMarkdown(ArrayList<Object> result, String methodName){
+        if (result == null) {
+            System.out.println("No result for: " + methodName);
+        }
+        else{
+            StringBuilder sb = new StringBuilder();
+            Field[] fields = result.get(0).getClass().getFields();
+            ArrayList<String> fieldNames = new ArrayList<String>();
+            String secondLine = "|";
+            String className = result.get(0).getClass().getSimpleName();
+            for(int i = 0; i < fields.length; i++) {
+                fieldNames.add(fields[i].getName());
+                secondLine = secondLine + " --- |";
+            }
+            secondLine = secondLine + "\r\n";
+            if(className.equals("CapitalCity")){
+                fieldNames.remove("district");
+                secondLine = "| --- | --- | --- |\r\n";
+            }
+            
+            if(methodName.contains("total")){
+                fieldNames.remove("totalCity");
+                fieldNames.remove("totalNotCity");
+                fieldNames.remove("percentageCity");
+                fieldNames.remove("percentageNotCity");
+                secondLine = "| --- | --- |\r\n";
+            }
+
+            String heading = String.join(" | ", fieldNames);
+            sb.append("| " + heading + " |\r\n");
+            sb.append(secondLine);
+            for(int i = 0; i < result.size(); i++){
+                switch(className) {
+                    case "City":
+                        City city = (City) result.get(i);
+                        sb.append(city.ToRow());
+                        break;
+                    case "CapitalCity":
+                        CapitalCity capCity = (CapitalCity) result.get(i);
+                        sb.append(capCity.ToRow());
+                        break;
+                    case "Country":
+                        Country country = (Country) result.get(i);
+                        sb.append(country.ToRow());
+                        break;
+                    case "Language":
+                        Language lang = (Language) result.get(i);
+                        sb.append(lang.ToRow());
+                        break;
+                    case "Population":
+                        Population pop = (Population) result.get(i);
+                        sb.append(pop.ToRow());
+                        break;
+                }
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + methodName + ".md")));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

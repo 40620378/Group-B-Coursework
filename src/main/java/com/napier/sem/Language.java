@@ -17,4 +17,9 @@ public class Language {
         String result = "Language: " + Language + " noOfSpeakers: " + noOfSpeakers + " percentWorldPop: " + percentWorldPop + "%";
         return result;
     }
+
+    public String ToRow() {
+        String result = "| " + Language + " | " + noOfSpeakers + " | " + percentWorldPop + "% |\r\n";
+        return result;
+    }
 }
