@@ -1,3 +1,3 @@
-| reportName | totalPopulation | totalCity | totalNotCity | percentageCity | percentageNotCity |
+| reportName | totalPopulation |
 | --- | --- | --- | --- | --- | --- |
-| Europe | 730074600 | 0(0.0%) | 0(0.0%) |
+| Europe | 730074600 | 0 | 0 | 0.0% | 0.0% |
