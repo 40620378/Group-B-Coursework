@@ -910,7 +910,7 @@ public class ReportUtil {
             }
             
             boolean totalMethod = methodName.contains("total");
-            if(methodName.contains("total")){
+            if(className.equals("TotalPopulation")){
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
