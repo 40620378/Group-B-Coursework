@@ -907,13 +907,17 @@ public class ReportUtil {
             if(className.equals("CapitalCity")){
                 fieldNames.remove("district");
                 secondLine = "| --- | --- | --- |\r\n";
-            }else if(methodName.contains("total")){
+            }
+            
+            if(methodName.contains("total")){
+                System.out.print("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
                 fieldNames.remove("totalCity");
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
                 fieldNames.remove("percentageNotCity");
                 secondLine = "| --- | --- | --- |\r\n";
             }
+
             String heading = String.join(" | ", fieldNames);
             sb.append("| " + heading + " |\r\n");
             sb.append(secondLine);
