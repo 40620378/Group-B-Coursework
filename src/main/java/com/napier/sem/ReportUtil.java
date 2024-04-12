@@ -915,7 +915,7 @@ public class ReportUtil {
                 fieldNames.remove("totalNotCity");
                 fieldNames.remove("percentageCity");
                 fieldNames.remove("percentageNotCity");
-                secondLine = "| --- | --- |\r\n";
+                secondLine = "| --- | --- | --- |\r\n";
             }
 
             String heading = String.join(" | ", fieldNames);
