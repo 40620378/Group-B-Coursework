@@ -239,4 +239,3 @@
 | IOT | British Indian Ocean Territory | Africa | Eastern Africa | 0 | null |
 | SGS | South Georgia and the South Sandwich Islands | Antarctica | Antarctica | 0 | null |
 | UMI | United States Minor Outlying Islands | Oceania | Micronesia/Caribbean | 0 | null |
-AHHHHHHHHHHHHHHHHHHHHHH

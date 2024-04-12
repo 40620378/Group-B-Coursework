@@ -46,4 +46,3 @@
 | GIB | Gibraltar | Europe | Southern Europe | 25000 | 915 |
 | SJM | Svalbard and Jan Mayen | Europe | Nordic Countries | 3200 | 938 |
 | VAT | Holy See (Vatican City State) | Europe | Southern Europe | 1000 | 3538 |
-AHHHHHHHHHHHHHHHHHHHHHH

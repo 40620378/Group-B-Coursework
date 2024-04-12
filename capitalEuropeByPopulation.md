@@ -46,4 +46,3 @@
 | Longyearbyen | Svalbard and Jan Mayen | 1438 |
 | Monaco-Ville | Monaco | 1234 |
 | Città del Vaticano | Holy See (Vatican City State) | 455 |
-AHHHHHHHHHHHHHHHHHHHHHH

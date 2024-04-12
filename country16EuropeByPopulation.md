@@ -16,4 +16,3 @@
 | BEL | Belgium | Europe | Western Europe | 10239000 | 179 |
 | BLR | Belarus | Europe | Eastern Europe | 10236000 | 3520 |
 | HUN | Hungary | Europe | Eastern Europe | 10043200 | 3483 |
-AHHHHHHHHHHHHHHHHHHHHHH

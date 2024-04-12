@@ -13,4 +13,3 @@
 | Bangkok | Thailand | 6320174 |
 | Santafé de Bogotá | Colombia | 6260862 |
 | Kinshasa | Congo, The Democratic Republic of the | 5064000 |
-AHHHHHHHHHHHHHHHHHHHHHH

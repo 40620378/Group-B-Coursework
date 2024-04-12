@@ -13,4 +13,3 @@
 | Tokyo | Japan | Tokyo-to | 7980230 |
 | Peking | China | Peking | 7472000 |
 | London | United Kingdom | England | 7285000 |
-AHHHHHHHHHHHHHHHHHHHHHH

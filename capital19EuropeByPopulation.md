@@ -19,4 +19,3 @@
 | Riga | Latvia | 764328 |
 | Stockholm | Sweden | 750348 |
 | Amsterdam | Netherlands | 731200 |
-AHHHHHHHHHHHHHHHHHHHHHH

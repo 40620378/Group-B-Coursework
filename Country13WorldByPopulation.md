@@ -13,4 +13,3 @@
 | MEX | Mexico | North America | Central America | 98881000 | 2515 |
 | DEU | Germany | Europe | Western Europe | 82164700 | 3068 |
 | VNM | Vietnam | Asia | Southeast Asia | 79832000 | 3770 |
-AHHHHHHHHHHHHHHHHHHHHHH

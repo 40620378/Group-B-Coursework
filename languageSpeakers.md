@@ -5,4 +5,3 @@
 | Spanish | 355029462 | 47.32% |
 | English | 347077867 | 55.32% |
 | Arabic | 233839238 | 42.36% |
-AHHHHHHHHHHHHHHHHHHHHHH

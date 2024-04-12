@@ -366,4 +366,3 @@
 | Moroni | Comoros | Njazidja | 36000 |
 | Mamoutzou | Mayotte | Mamoutzou | 12000 |
 | Jamestown | Saint Helena | Saint Helena | 1500 |
-AHHHHHHHHHHHHHHHHHHHHHH
