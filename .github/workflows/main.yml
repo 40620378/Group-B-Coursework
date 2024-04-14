@@ -46,6 +46,13 @@ jobs:
         run: docker run --name test_db -p 3306:3306 -d test_db
       - name: Integration Tests
         run: mvn -Dtest=com.napier.sem.AppIntegration test
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+            token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
+            directory: ./target/site/jacoco
+            flags: Integration Tests # optional
+            verbose: true # optional (default = false)
 
 
   build:
