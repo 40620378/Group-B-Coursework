@@ -38,8 +38,14 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      - name: Build db
+        run: |
+          cd db 
+          docker build -t test_db .
+      - name: Run db
+        run: docker run --name test_db -p 3306:3306 -d test_db
       - name: Integration Tests
-        run: mvn -Dtest=com.napier.sem.*Test test
+        run: mvn -Dtest=com.napier.sem.AppIntegration integration
 
 
   build:
