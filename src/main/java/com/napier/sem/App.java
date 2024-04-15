@@ -18,7 +18,7 @@ public class App
     {
         //get instance of SingletonConnection class
         SingletonConnection connectionManager = SingletonConnection.getInstance();
-        Connection connection = connectionManager.connect();
+        Connection connection = connectionManager.connect("jdbc:mysql://db:3306/world?useSSL=false");
 
         System.out.println("Countries By Population");
         ArrayList<Country> countryWorldByPopulation = ReportUtil.countryWorldByPopulation(connection);
@@ -112,4 +112,7 @@ public class App
         }
         ReportUtil.generateMarkdown(resultObject, name);
     }
+
+
+
 }
