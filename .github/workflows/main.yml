@@ -1,8 +1,5 @@
 name: Countries App Workflow
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   UnitTests:
@@ -77,10 +74,10 @@ jobs:
         with:
           branch: reports # The branch the action should deploy to.
           folder: reports # The folder we are copying
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            prerelease: false
-            automatic_release_tag: "latest"
-            files: |
-              ./target/*.jar
+      #- uses: "marvinpinto/action-automatic-releases@latest"
+      #  with:
+      #      repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #      prerelease: false
+      #      automatic_release_tag: "latest"
+      #      files: |
+      #        ./target/*.jar
