@@ -1,9 +1,12 @@
 name: Countries App Workflow
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
-    name: Countries action
+  UnitTests:
+    name: Unit Tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
