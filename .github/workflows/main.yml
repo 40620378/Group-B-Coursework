@@ -1,5 +1,8 @@
 name: Countries App Workflow
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   UnitTests:
@@ -9,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-            submodules: recursive
+          submodules: recursive
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -20,10 +23,10 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-            token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
-            directory: ./target/site/jacoco
-            flags: Unit Tests # optional
-            verbose: true # optional (default = false)
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
+          directory: ./target/site/jacoco
+          flags: Unit Tests # optional
+          verbose: true # optional (default = false)
 
   IntegrationTests:
     name: Integration Tests
@@ -49,10 +52,10 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-            token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
-            directory: ./target/site/jacoco
-            flags: Integration Tests # optional
-            verbose: true # optional (default = false)
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
+          directory: ./target/site/jacoco
+          flags: Integration Tests # optional
+          verbose: true # optional (default = false)
 
 
   build:
@@ -74,10 +77,10 @@ jobs:
         with:
           branch: reports # The branch the action should deploy to.
           folder: reports # The folder we are copying
-      #- uses: "marvinpinto/action-automatic-releases@latest"
-      #  with:
-      #      repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #      prerelease: false
-      #      automatic_release_tag: "latest"
-      #      files: |
-      #        ./target/*.jar
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: "latest"
+          files: |
+            ./target/*.jar
