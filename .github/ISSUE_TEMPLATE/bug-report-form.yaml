@@ -27,14 +27,14 @@ body:
       value: "A bug happened!"
     validations:
       required: true
-
-    - type: textarea
-    id: SQL Query
+  - type: dropdown
+    id: version
     attributes:
-      label: Which Query?
-      description: Which query do you have an issue with?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      description: What SQL Query are you having an issue with?
+      options:
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
+      default: 0
     validations:
       required: true
   - type: dropdown
