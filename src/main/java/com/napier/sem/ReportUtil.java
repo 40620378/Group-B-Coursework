@@ -27,6 +27,7 @@ public class ReportUtil {
             while (resultSet.next()) {
                 Population pop = new Population();
                 pop.reportName = resultSet.getString("reportName");
+
                 pop.totalCity = resultSet.getLong("totalCity");
                 pop.totalPopulation = resultSet.getLong("totalPopulation");
                 pop.totalNotCity = resultSet.getLong("totalNotCity");

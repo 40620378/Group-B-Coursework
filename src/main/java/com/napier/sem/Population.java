@@ -16,7 +16,7 @@ public class Population {
      * @return concatenated string of all properties
      */
     public String ToString(){
-        String result = "Name: " + reportName + " Population: " + totalPopulation + " City: " + totalCity + "(" + percentageCity + "%) Not City: " + totalNotCity + "(" + percentageNotCity + "%)";
+        String result = "Name: " + reportName + " Population: " + totalPopulation + " City: " + totalCity + " Not City: " + totalNotCity;
         return result;
     }
 

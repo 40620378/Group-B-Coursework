@@ -66,16 +66,4 @@ public class SQLUtil {
         }
         return valid;
     }
-
-    private static boolean isInt(String value){
-        boolean result;
-        try{
-            Integer.parseInt(value);
-            result = true;
-        }
-        catch(Exception e){
-            result = false;
-        }
-        return result;
-    }
 }

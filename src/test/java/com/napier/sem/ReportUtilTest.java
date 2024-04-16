@@ -26,7 +26,7 @@ public class ReportUtilTest
         Mockito.when(result.getFloat("percentageNotCity")).thenReturn((float)71.81);
         ArrayList<Population> resultList = ReportUtil.peopleDistributionCountry(con);
         assertEquals(1, resultList.size());
-        String expected = "Name: Aruba Population: 103000 City: 29034(28.19%) Not City: 73966(71.81%)";
+        String expected = "Name: Aruba Population: 103000 City: 29034 Not City: 73966";
         assertEquals(expected, resultList.get(0).ToString());
     }
 
