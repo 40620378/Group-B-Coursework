@@ -22,7 +22,7 @@ public class SingletonConnection {
         return instance;
     }
 
-    private Connection connectDB() {
+    private Connection connectDB(String url) {
         try
         {
             // Load Database driver
@@ -48,7 +48,7 @@ public class SingletonConnection {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection(url, "root", "example");
                 System.out.println("Successfully connected");
                 // Wait a bit
                 Thread.sleep(10000);
@@ -74,11 +74,11 @@ public class SingletonConnection {
      * Public get method for the DB connection, ensures only one connection exists at a time.
      * @return the DB connection
      */
-    public Connection connect(){
+    public Connection connect(String url){
         //checks if connection exists
         if(connection == null){
             //connects to DB
-            connection = connectDB();
+            connection = connectDB(url);
         }
         return connection;
     }
