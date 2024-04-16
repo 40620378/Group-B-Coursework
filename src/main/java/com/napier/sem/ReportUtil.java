@@ -75,7 +75,7 @@ public class ReportUtil {
     /**
      * Generates a report for the overall population as well as those that live in a city and don't within a region.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> peopleDistributionRegion(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -105,7 +105,7 @@ public class ReportUtil {
      * Generates a report for the countries in a continent sorted from largest population to smallest.
      * @param connection the connection to the database
      * @param continent the specified continent
-     * @return
+     * @return ArrayList of returned Country objects
      */
     public static ArrayList<Country> countryContinentByPopulation(Connection connection, String continent){
         ArrayList<Country> result = new ArrayList<Country>();
@@ -134,7 +134,7 @@ public class ReportUtil {
     /**
      * Generates a report for the countries in the world sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Country objects
      */
     public static ArrayList<Country> countryWorldByPopulation(Connection connection){
         ArrayList<Country> result = new ArrayList<Country>();
@@ -164,7 +164,7 @@ public class ReportUtil {
      * Generates a report for the countries in a region sorted from largest population to smallest.
      * @param connection the connection to the database
      * @param region the specified region
-     * @return
+     * @return ArrayList of returned Country objects
      */
     public static ArrayList<Country> countryRegionByPopulation(Connection connection, String region){
         ArrayList<Country> result = new ArrayList<Country>();
@@ -193,7 +193,7 @@ public class ReportUtil {
     /**
      * Generates a report for the N populated countries in the world where N is provided by the user.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Country objects
      */
     public static ArrayList<Country> nCountryWorldByPopulation(Connection connection, String N){
         ArrayList<Country> result = new ArrayList<Country>();
@@ -223,7 +223,7 @@ public class ReportUtil {
      * Generates a report for the N populated countries in a continent where N is provided by the user.
      * @param connection the connection to the database
      * @param continent the specified continent
-     * @return
+     * @return ArrayList of returned Country objects
      */
     public static ArrayList<Country> nCountryContinentByPopulation(Connection connection, String continent, String N){
         ArrayList<Country> result = new ArrayList<Country>();
@@ -282,7 +282,7 @@ public class ReportUtil {
     /**
      * Generates a report for the capital cities in the world sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Country objects
      */
     public static ArrayList<CapitalCity> capitalWorldByPopulation(Connection connection){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
@@ -309,7 +309,7 @@ public class ReportUtil {
      * Generates a report for the capital cities in a continent sorted from largest population to smallest.
      * @param connection the connection to the database
      * @param continent the specified continent
-     * @return
+     * @return ArrayList of returned CapitalCity objects
      */
     public static ArrayList<CapitalCity> capitalContinentByPopulation(Connection connection, String continent){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
@@ -336,7 +336,7 @@ public class ReportUtil {
      * Generates a report for the capital cities in a region sorted from largest population to smallest.
      * @param connection the connection to the database
      * @param region the specified region
-     * @return
+     * @return ArrayList of returned CapitalCity objects
      */
     public static ArrayList<CapitalCity> capitalRegionByPopulation(Connection connection, String region){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
@@ -362,7 +362,7 @@ public class ReportUtil {
     /**
      * Generates a report for the N populated capital cities in the world where N is provided by the user.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned CapitalCity objects
      */
     public static ArrayList<CapitalCity> nCapitalWorldByPopulation(Connection connection, String N){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
@@ -389,7 +389,7 @@ public class ReportUtil {
      * Generates a report for the N populated capital cities in a continent where N is provided by the user.
      * @param connection the connection to the database
      * @param continent the specified continent
-     * @return
+     * @return ArrayList of returned CapitalCity objects
      */
     public static ArrayList<CapitalCity> nCapitalContinentByPopulation(Connection connection, String continent, String N){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
@@ -416,7 +416,7 @@ public class ReportUtil {
      * Generates a report for the N populated capital cities in a region where N is provided by the user.
      * @param connection the connection to the database
      * @param region the specified region
-     * @return
+     * @return ArrayList of returned CapitalCity objects
      */
     public static ArrayList<CapitalCity> nCapitalRegionByPopulation(Connection connection, String region, String N){
         ArrayList<CapitalCity> result = new ArrayList<CapitalCity>();
@@ -442,7 +442,7 @@ public class ReportUtil {
     /**
      * Generates a report for the cities in the world sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> citiesWorldByPopulation(Connection connection){
         ArrayList<City> result = new ArrayList<City>();
@@ -469,7 +469,7 @@ public class ReportUtil {
     /**
      * Generates a report for the cities in a continent sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> citiesContinentByPopulation(Connection connection, String continent){
         ArrayList<City> result = new ArrayList<City>();
@@ -496,7 +496,7 @@ public class ReportUtil {
     /**
      * Generates a report for the cities in a region sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> citiesRegionByPopulation(Connection connection, String region){
         ArrayList<City> result = new ArrayList<City>();
@@ -523,7 +523,7 @@ public class ReportUtil {
     /**
      * Generates a report for the cities in a country sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> citiesCountryByPopulation(Connection connection, String country){
         ArrayList<City> result = new ArrayList<City>();
@@ -550,7 +550,7 @@ public class ReportUtil {
     /**
      * Generates a report for the cities in a district sorted from largest population to smallest.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> citiesDistrictByPopulation(Connection connection, String district){
         ArrayList<City> result = new ArrayList<City>();
@@ -604,7 +604,7 @@ public class ReportUtil {
     /**
      * Generates a report for the N populated cities in a continent where N is provided by the user.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> nCitiesContinentByPopulation(Connection connection, String continent, String N){
         ArrayList<City> result = new ArrayList<City>();
@@ -631,7 +631,7 @@ public class ReportUtil {
      /**
      * Generates a report for the N populated cities in a region where N is provided by the user.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> nCitiesRegionByPopulation(Connection connection, String region, String N){
         ArrayList<City> result = new ArrayList<City>();
@@ -658,7 +658,7 @@ public class ReportUtil {
     /**
      * Generates a report for the N populated cities in a country where N is provided by the user.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> nCitiesCountryByPopulation(Connection connection, String country, String N){
         ArrayList<City> result = new ArrayList<City>();
@@ -685,7 +685,7 @@ public class ReportUtil {
     /**
      * Generates a report for the N populated cities in a district where N is provided by the user.
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned City objects
      */
     public static ArrayList<City> nCitiesDistrictByPopulation(Connection connection, String district, String N){
         ArrayList<City> result = new ArrayList<City>();
@@ -718,7 +718,7 @@ public class ReportUtil {
     /**
      * Generates a report for the total population of the world
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> totalPopulationWorld(Connection connection){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -743,7 +743,7 @@ public class ReportUtil {
     /**
      * Generates a report for the total population of a continent
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> totalPopulationContinent(Connection connection, String continent){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -768,7 +768,7 @@ public class ReportUtil {
     /**
      * Generates a report for the total population of a region
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> totalPopulationRegion(Connection connection, String region){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -793,7 +793,7 @@ public class ReportUtil {
     /**
      * Generates a report for the total population of a country
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> totalPopulationCountry(Connection connection, String country){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -818,7 +818,7 @@ public class ReportUtil {
     /**
      * Generates a report for the total population of a district
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> totalPopulationDistrict(Connection connection, String district){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -843,7 +843,7 @@ public class ReportUtil {
     /**
      * Generates a report for the total population of a city
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Population objects
      */
     public static ArrayList<Population> totalPopulationCity(Connection connection, String city){
         ArrayList<Population> result = new ArrayList<Population>();
@@ -868,7 +868,7 @@ public class ReportUtil {
     /**
      * Generates a report for the nuber of people who speak a language
      * @param connection the connection to the database
-     * @return
+     * @return ArrayList of returned Language objects
      */
     public static ArrayList<Language> languagePercentage(Connection connection){
         ArrayList<Language> result = new ArrayList<Language>();
