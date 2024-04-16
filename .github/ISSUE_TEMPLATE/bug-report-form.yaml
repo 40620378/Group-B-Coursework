@@ -62,7 +62,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com). 
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/40620378/Group-B-Coursework/blob/master/.github/ISSUE_TEMPLATE/bug-report-form.yaml). 
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
