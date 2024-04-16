@@ -18,9 +18,4 @@ public class Country {
         String result = "Country code: " + code + " Country name: " + name + " Continent: " + continent + " Region: " + region + " Population: " + population + " Capital: " + capital;
         return result;
     }
-
-    public String ToRow() {
-        String result = "| " + code + " | " + name + " | " + continent + " | " + region + " | " + population + " | " + capital + " |\r\n";
-        return result;
-    }
 }
