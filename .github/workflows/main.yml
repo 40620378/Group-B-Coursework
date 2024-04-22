@@ -21,12 +21,13 @@ jobs:
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem.*Test test
       - name: CodeCov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4.0.1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./target/site/jacoco
           flags: Unit Tests # optional
           verbose: true # optional (default = false)
+          slug: 40620378/Group-B-Coursework
 
   IntegrationTests:
     name: Integration Tests
@@ -50,12 +51,13 @@ jobs:
       - name: Integration Tests
         run: mvn -Dtest=com.napier.sem.AppIntegration test
       - name: CodeCov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v4.0.1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)
+          slug: 40620378/Group-B-Coursework
 
 
   build:
