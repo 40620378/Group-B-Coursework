@@ -20,10 +20,12 @@
 | 
 | 3  | All the countries in a region organised by largest population to smallest. | Yes | ![image](https://github.com/40620378/Group-B-Coursework/assets/157486877/6f725752-37c1-4f86-9afd-2fe8e311f6fb)|
 | 
-| 4  | The top N populated countries in the world where N is provided by the user. | Yes |  | 
+| 4  | The top N populated countries in the world where N is provided by the user. | Yes | ![image](https://github.com/40620378/Group-B-Coursework/assets/157486877/1a578c83-9992-48b4-a58c-3047a2e34bf4)
+ | 
 | 5  | The top N populated countries in a continent where N is provided by the user. | Yes | ![image](https://github.com/40620378/Group-B-Coursework/assets/157486877/8d05ba22-8b64-4813-a79a-86852c432021)|
 | 
-| 6  | The top N populated countries in a region where N is provided by the user. | Yes |  | 
+| 6  | The top N populated countries in a region where N is provided by the user. | Yes | ![image](https://github.com/40620378/Group-B-Coursework/assets/157486877/7b3bc59b-f587-45e7-85cc-cfce536be87c)
+ | 
 | 7  | All the cities in the world organised by largest population to smallest. | Yes | ![image](https://github.com/40620378/Group-B-Coursework/assets/157486877/94506828-3a52-4b7b-9e2b-b989667518ae)|
 | 
 | 8  | All the cities in a continent organised by largest population to smallest. | Yes | ![image](https://github.com/40620378/Group-B-Coursework/assets/157486877/e343af32-8c37-4621-adb9-26e8613d98de)|
